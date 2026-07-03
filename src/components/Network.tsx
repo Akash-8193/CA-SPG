@@ -3,38 +3,23 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Handshake } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { Landmark, Building2, Briefcase } from "lucide-react";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-const networkCategories = [
-  {
-    title: "Public Sector Banks",
-    icon: Landmark,
-    theme: "bg-deep-navy text-white",
-    border: "border-white/10",
-    textMuted: "text-white/60",
-    entities: ["State Bank of India", "Punjab National Bank", "Bank of Baroda", "Union Bank", "Bank of India", "Bank of Maharashtra", "Punjab & Sind Bank"]
-  },
-  {
-    title: "Private Banks & NBFCs",
-    icon: Building2,
-    theme: "bg-ivory text-deep-navy",
-    border: "border-deep-navy/10",
-    textMuted: "text-slate-gray",
-    entities: ["IDFC First Bank", "Axis Bank", "HDFC", "Yes Bank", "RBL Bank", "Standard Chartered Bank", "Tata Capital Ltd", "Bajaj Finance", "Aditya Birla Finance", "India Bulls"]
-  },
-  {
-    title: "Specialized Lenders",
-    icon: Briefcase,
-    theme: "bg-white text-deep-navy",
-    border: "border-deep-navy/10",
-    textMuted: "text-slate-gray",
-    entities: ["SIDBI", "LIC", "Power Finance Corporation"]
-  }
+const banks = [
+  { name: "SBI", fullName: "State Bank of India", color: "text-blue-600" },
+  { name: "PNB", fullName: "Punjab National Bank", color: "text-red-700" },
+  { name: "Bank of Baroda", fullName: "Bank of Baroda", color: "text-orange-500" },
+  { name: "HDFC BANK", fullName: "HDFC Bank", color: "text-blue-800" },
+  null, // Center item
+  { name: "ICICI Bank", fullName: "ICICI Bank", color: "text-orange-600" },
+  { name: "AXIS BANK", fullName: "Axis Bank", color: "text-red-800" },
+  { name: "YES BANK", fullName: "Yes Bank", color: "text-blue-700" },
+  { name: "IDFC FIRST", fullName: "IDFC First Bank", color: "text-red-900" },
 ];
 
 export function Network() {
@@ -42,69 +27,124 @@ export function Network() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const cards = gsap.utils.toArray<HTMLElement>(".stack-card");
+      // Lines animation
+      gsap.fromTo(
+        ".connecting-line",
+        { strokeDasharray: "0, 1000" },
+        {
+          strokeDasharray: "10, 10",
+          duration: 1.5,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top 70%",
+          }
+        }
+      );
 
-      cards.forEach((card, index) => {
-        ScrollTrigger.create({
-          trigger: card,
-          start: `top top+=${100 + index * 40}`,
-          endTrigger: containerRef.current,
-          end: "bottom bottom",
-          pin: true,
-          pinSpacing: false,
-          id: `card-pin-${index}`,
-        });
-      });
+      // Hexagons animation
+      gsap.fromTo(
+        ".hex-card",
+        { opacity: 0, scale: 0.8 },
+        {
+          opacity: 1,
+          scale: 1,
+          duration: 0.8,
+          stagger: 0.1,
+          ease: "back.out(1.2)",
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top 70%",
+          }
+        }
+      );
     }, containerRef);
 
     return () => ctx.revert();
   }, []);
 
   return (
-    <section ref={containerRef} className="pb-32 bg-warm-white relative">
+    <section ref={containerRef} className="py-24 md:py-32 bg-[#FAFAFA] relative">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Headers */}
+        <div className="text-center mb-16 md:mb-24">
+          <p className="text-luxury-gold tracking-[0.25em] uppercase text-[10px] md:text-xs font-bold mb-4">
+            STRATEGIC ALLIANCES
+          </p>
+          <h2 className="font-serif text-3xl md:text-5xl text-deep-navy font-medium mb-6">
+            Connected. Collaborative. Committed.
+          </h2>
+          <p className="text-slate-500 max-w-2xl mx-auto text-sm md:text-base font-light">
+            Our alliances reflect our commitment to deliver comprehensive, innovative and reliable financial solutions.
+          </p>
+        </div>
 
-      {/* Section Header */}
-      <div className="pt-32 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center">
-        <p className="text-luxury-gold tracking-[0.3em] uppercase text-xs mb-4 font-semibold">Strategic Alliances</p>
-        <h2 className="font-serif text-4xl md:text-6xl text-deep-navy">
-          Our Network of Partners
-        </h2>
-      </div>
+        {/* 3x3 Grid Area */}
+        <div className="relative max-w-4xl mx-auto">
+          
+          {/* SVG Connecting Lines */}
+          <svg className="absolute inset-0 w-full h-full pointer-events-none z-0" style={{ filter: "drop-shadow(0px 2px 2px rgba(0,0,0,0.05))" }}>
+            <g className="stroke-luxury-gold/40" strokeWidth="1.5" strokeLinecap="round">
+              {/* Top Row */}
+              <line className="connecting-line" x1="50%" y1="50%" x2="16.66%" y2="16.66%" />
+              <line className="connecting-line" x1="50%" y1="50%" x2="50%" y2="16.66%" />
+              <line className="connecting-line" x1="50%" y1="50%" x2="83.33%" y2="16.66%" />
+              
+              {/* Middle Row */}
+              <line className="connecting-line" x1="50%" y1="50%" x2="16.66%" y2="50%" />
+              <line className="connecting-line" x1="50%" y1="50%" x2="83.33%" y2="50%" />
+              
+              {/* Bottom Row */}
+              <line className="connecting-line" x1="50%" y1="50%" x2="16.66%" y2="83.33%" />
+              <line className="connecting-line" x1="50%" y1="50%" x2="50%" y2="83.33%" />
+              <line className="connecting-line" x1="50%" y1="50%" x2="83.33%" y2="83.33%" />
+            </g>
+          </svg>
 
-      {/* Stacking Cards */}
-      <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-[10vh]">
-        {networkCategories.map((cat, idx) => (
-          <div
-            key={idx}
-            className={cn(
-              "stack-card relative w-full rounded-t-3xl border-t border-x overflow-hidden shadow-2xl origin-top mb-10 h-[60vh] flex flex-col p-8 md:p-16",
-              cat.theme,
-              cat.border
-            )}
-            style={{ zIndex: idx }}
-          >
-            {/* Background Texture/Gradient */}
-            {idx === 0 && <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-luxury-gold/5 to-transparent pointer-events-none" />}
-            {idx === 1 && <div className="absolute top-0 right-0 w-96 h-96 bg-luxury-gold/5 rounded-full blur-3xl pointer-events-none" />}
+          {/* Hexagon Grid */}
+          <div className="grid grid-cols-3 gap-4 md:gap-8 relative z-10">
+            {banks.map((bank, index) => {
+              
+              // Center Highlight Item
+              if (index === 4) {
+                return (
+                  <div key={index} className="hex-card aspect-[5/3] md:aspect-[2/1] relative flex items-center justify-center filter drop-shadow-[0_10px_15px_rgba(0,0,0,0.15)] group">
+                    <div 
+                      className="absolute inset-0 bg-deep-navy border-2 border-luxury-gold flex flex-col items-center justify-center p-4 text-center transition-transform duration-300 group-hover:scale-105"
+                      style={{ clipPath: "polygon(15% 0%, 85% 0%, 100% 50%, 85% 100%, 15% 100%, 0% 50%)" }}
+                    >
+                      <Handshake className="w-8 h-8 md:w-10 md:h-10 text-white mb-2" />
+                      <p className="text-white font-serif text-sm md:text-lg leading-tight">
+                        Partnerships<br/>That Drive<br/>Progress
+                      </p>
+                    </div>
+                  </div>
+                );
+              }
 
-            <div className="flex items-center gap-4 mb-12 relative z-10">
-              <div className="w-12 h-12 rounded-full border border-current flex items-center justify-center opacity-50">
-                <cat.icon className="w-5 h-5" />
-              </div>
-              <h3 className="font-serif text-3xl md:text-5xl">{cat.title}</h3>
-            </div>
-
-            <div className="relative z-10 flex flex-wrap gap-x-8 gap-y-4 max-w-4xl">
-              {cat.entities.map((entity, i) => (
-                <span key={i} className={cn("font-sans text-lg md:text-xl font-light", cat.textMuted)}>
-                  {entity}
-                </span>
-              ))}
-            </div>
+              // Normal Bank Items
+              return (
+                <div key={index} className="hex-card aspect-[5/3] md:aspect-[2/1] relative flex items-center justify-center filter drop-shadow-[0_8px_15px_rgba(0,0,0,0.06)] group">
+                  <div 
+                    className="absolute inset-0 bg-white flex flex-col items-center justify-center p-2 md:p-4 text-center transition-transform duration-300 group-hover:scale-105"
+                    style={{ clipPath: "polygon(15% 0%, 85% 0%, 100% 50%, 85% 100%, 15% 100%, 0% 50%)" }}
+                  >
+                    <span className={cn("font-bold text-lg md:text-2xl font-sans tracking-tight", bank?.color)}>
+                      {bank?.name}
+                    </span>
+                    <span className="hidden md:block text-[10px] text-slate-400 mt-1 uppercase tracking-wider font-medium">
+                      {bank?.fullName}
+                    </span>
+                  </div>
+                </div>
+              );
+            })}
           </div>
-        ))}
-      </div>
 
+        </div>
+
+      </div>
     </section>
   );
 }
