@@ -20,7 +20,7 @@ const navLinks = [
       { name: "Company Law", href: "/services/company-law" },
       { name: "Financial Services", href: "/services/financial-services" },
       { name: "Capital Advisory", href: "/services/capital-advisory" },
-      { name: "IPO Services", href: "/services/ipo-services" },
+      { name: "IPO Services", href: "/services/ipo-service" },
       { name: "Management Consultancy", href: "/services/management-consultancy" },
       { name: "Due Diligence", href: "/services/due-diligence" },
       { name: "FEMA Advisory", href: "/services/fema-advisory" },

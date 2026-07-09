@@ -19,12 +19,12 @@ const faqs = [
 
 // Timeline Services (9 to 14)
 const timelineServices = [
-  { title: "Drafting of MOA", description: "We draft Memorandum of Association (MOA) documents that reflect your company's objectives and legal framework, ensuring clarity and regulatory compliance from the outset.", align: "left", bg: "bg-black" },
-  { title: "Corporate Planning & Strategy", description: "We partner with your leadership team to craft strategic plans focused on growth, diversification, market expansion, and operational excellence—enabling long-term competitiveness and vision alignment.", align: "right", bg: "bg-[#b90a2a]" },
-  { title: "SEBI Compliance for Fundraising", description: "We assist businesses in meeting SEBI (Securities and Exchange Board of India) requirements for fundraising, whether through equity, convertible instruments, or public offers. Our team ensures timely, accurate, and transparent documentation.", align: "left", bg: "bg-[#b90a2a]" },
-  { title: "Organizational Structure Consultancy", description: "We help define and optimize your organizational hierarchy and reporting systems, fostering clarity, accountability, and scalability across all departments.", align: "right", bg: "bg-black" },
-  { title: "Preparation & Analysis of Prospect for IPO", description: "We support companies preparing for Initial Public Offerings by drafting and analyzing IPO prospectuses, coordinating with stakeholders, and ensuring full regulatory readiness and market clarity.", align: "left", bg: "bg-black" },
-  { title: "Business Process Reengineering", description: "Our experts analyze and reengineer core business processes for improved efficiency, quality, and speed. We apply modern frameworks to help eliminate bottlenecks and reduce operational costs.", align: "right", bg: "bg-[#b90a2a]" }
+  { title: "Drafting of MOA", description: "We draft Memorandum of Association (MOA) documents that reflect your company's objectives and legal framework, ensuring clarity and regulatory compliance from the outset.", side: "left", bg: "bg-black", dotClass: "bg-[#b90a2a]", lineClass: "bg-[#b90a2a]" },
+  { title: "Corporate Planning & Strategy", description: "We partner with your leadership team to craft strategic plans focused on growth, diversification, market expansion, and operational excellence—enabling long-term competitiveness and vision alignment.", side: "right", bg: "bg-[#b90a2a]", dotClass: "bg-black", lineClass: "bg-black" },
+  { title: "SEBI Compliance for Fundraising", description: "We assist businesses in meeting SEBI (Securities and Exchange Board of India) requirements for fundraising, whether through equity, convertible instruments, or public offers. Our team ensures timely, accurate, and transparent documentation.", side: "left", bg: "bg-[#b90a2a]", dotClass: "bg-black", lineClass: "bg-black" },
+  { title: "Organizational Structure Consultancy", description: "We help define and optimize your organizational hierarchy and reporting systems, fostering clarity, accountability, and scalability across all departments.", side: "right", bg: "bg-black", dotClass: "bg-[#b90a2a]", lineClass: "bg-[#b90a2a]" },
+  { title: "Preparation & Analysis of Prospect for IPO", description: "We support companies preparing for Initial Public Offerings by drafting and analyzing IPO prospectuses, coordinating with stakeholders, and ensuring full regulatory readiness and market clarity.", side: "left", bg: "bg-black", dotClass: "bg-[#b90a2a]", lineClass: "bg-[#b90a2a]" },
+  { title: "Business Process Reengineering", description: "Our experts analyze and reengineer core business processes for improved efficiency, quality, and speed. We apply modern frameworks to help eliminate bottlenecks and reduce operational costs.", side: "right", bg: "bg-[#b90a2a]", dotClass: "bg-black", lineClass: "bg-black" }
 ];
 
 export default function ManagementConsultancyPage() {
@@ -268,44 +268,84 @@ export default function ManagementConsultancyPage() {
          {/* Subtle background diagonal shapes matching screenshot */}
          <div className="absolute inset-0 opacity-[0.03] z-0 pointer-events-none" style={{ background: 'linear-gradient(45deg, #000 25%, transparent 25%, transparent 75%, #000 75%, #000), linear-gradient(45deg, #000 25%, transparent 25%, transparent 75%, #000 75%, #000)', backgroundSize: '60px 60px', backgroundPosition: '0 0, 30px 30px' }} />
 
-         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+         {/* DESKTOP (2-Column True Staggered Layout) */}
+         <div className="hidden md:flex max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 justify-between items-start">
             
             {/* The TWO Parallel Center Lines */}
-            <div className="absolute left-[calc(50%-12px)] top-0 bottom-0 w-[2px] bg-black hidden md:block" />
-            <div className="absolute left-[calc(50%+12px)] top-0 bottom-0 w-[2px] bg-blue-100 hidden md:block" />
+            <div className="absolute left-[calc(50%-12px)] top-0 bottom-0 w-[2px] bg-black" />
+            <div className="absolute left-[calc(50%+12px)] top-0 bottom-0 w-[2px] bg-blue-100" />
 
-            <div className="space-y-12 md:space-y-16">
-               {timelineServices.map((service, idx) => {
-                  const isLeft = service.align === "left";
-                  const isBlackBg = service.bg === "bg-black";
-                  
-                  // Dot logic based on screenshot: Box Black -> Dot Red. Box Red -> Dot Black.
-                  const dotColor = isBlackBg ? "bg-[#b90a2a]" : "bg-black";
-                  // Position logic: Left boxes attach to left (black) line. Right boxes attach to right (blue-100) line.
-                  const dotPositionClass = isLeft ? "left-[calc(50%-12px)]" : "left-[calc(50%+12px)]";
-
-                  return (
-                     <div key={idx} className={`relative flex flex-col md:flex-row items-center ${isLeft ? 'md:justify-start' : 'md:justify-end'}`}>
-                        
-                        {/* Square Timeline Dot */}
-                        <div className={`hidden md:block absolute ${dotPositionClass} transform -translate-x-1/2 w-4 h-4 ${dotColor} z-10`} />
-
-                        {/* Content Box */}
-                        <motion.div 
-                          initial={{ opacity: 0, x: isLeft ? -50 : 50 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          viewport={{ once: true }}
-                          className={`w-full md:w-[42%] p-8 md:p-10 rounded-xl relative z-20 ${service.bg} shadow-[0_15px_40px_rgba(0,0,0,0.15)] ${isLeft ? 'md:text-right text-left' : 'text-left'}`}
-                        >
-                           <h3 className="text-[22px] font-bold text-white mb-4 leading-snug">{service.title}</h3>
-                           <p className="text-white/90 text-[15px] font-medium leading-[1.8]">{service.description}</p>
-                        </motion.div>
-
-                     </div>
-                  );
-               })}
+            {/* LEFT COLUMN */}
+            <div className="w-[42%] flex flex-col space-y-12 z-10">
+               {timelineServices.filter(s => s.side === "left").map((service, idx) => (
+                  <div key={`left-${idx}`} className="relative w-full">
+                     {/* Horizontal Connecting Line */}
+                     <div 
+                        className={`absolute top-1/2 right-0 h-[2px] ${service.lineClass} -translate-y-1/2 translate-x-full`} 
+                        style={{ width: 'calc(19.047% - 12px)' }} 
+                     />
+                     {/* Square Timeline Dot */}
+                     <div 
+                        className={`absolute top-1/2 w-4 h-4 ${service.dotClass} -translate-y-1/2`} 
+                        style={{ right: 'calc(-19.047% + 12px)', transform: 'translate(50%, -50%)' }} 
+                     />
+                     
+                     <motion.div 
+                       initial={{ opacity: 0, x: -50 }}
+                       whileInView={{ opacity: 1, x: 0 }}
+                       viewport={{ once: true }}
+                       className={`p-8 md:p-10 rounded-xl relative shadow-[0_15px_40px_rgba(0,0,0,0.15)] text-right ${service.bg}`}
+                     >
+                        <h3 className="text-[22px] font-bold text-white mb-4 leading-snug">{service.title}</h3>
+                        <p className="text-white/90 text-[15px] font-medium leading-[1.8]">{service.description}</p>
+                     </motion.div>
+                  </div>
+               ))}
             </div>
 
+            {/* RIGHT COLUMN (Staggered Down) */}
+            <div className="w-[42%] flex flex-col space-y-12 mt-24 z-10">
+               {timelineServices.filter(s => s.side === "right").map((service, idx) => (
+                  <div key={`right-${idx}`} className="relative w-full">
+                     {/* Horizontal Connecting Line */}
+                     <div 
+                        className={`absolute top-1/2 left-0 h-[2px] ${service.lineClass} -translate-y-1/2 -translate-x-full`} 
+                        style={{ width: 'calc(19.047% - 12px)' }} 
+                     />
+                     {/* Square Timeline Dot */}
+                     <div 
+                        className={`absolute top-1/2 w-4 h-4 ${service.dotClass} -translate-y-1/2`} 
+                        style={{ left: 'calc(-19.047% + 12px)', transform: 'translate(-50%, -50%)' }} 
+                     />
+                     
+                     <motion.div 
+                       initial={{ opacity: 0, x: 50 }}
+                       whileInView={{ opacity: 1, x: 0 }}
+                       viewport={{ once: true }}
+                       className={`p-8 md:p-10 rounded-xl relative shadow-[0_15px_40px_rgba(0,0,0,0.15)] text-left ${service.bg}`}
+                     >
+                        <h3 className="text-[22px] font-bold text-white mb-4 leading-snug">{service.title}</h3>
+                        <p className="text-white/90 text-[15px] font-medium leading-[1.8]">{service.description}</p>
+                     </motion.div>
+                  </div>
+               ))}
+            </div>
+         </div>
+
+         {/* MOBILE (1-Column Chronological Layout) */}
+         <div className="md:hidden max-w-xl mx-auto px-4 flex flex-col space-y-6 relative z-10">
+            {timelineServices.map((service, idx) => (
+               <motion.div 
+                 key={`mobile-${idx}`}
+                 initial={{ opacity: 0, y: 30 }}
+                 whileInView={{ opacity: 1, y: 0 }}
+                 viewport={{ once: true }}
+                 className={`p-8 rounded-xl shadow-xl text-left ${service.bg}`}
+               >
+                  <h3 className="text-xl font-bold text-white mb-3 leading-snug">{service.title}</h3>
+                  <p className="text-white/90 text-[15px] font-medium leading-relaxed">{service.description}</p>
+               </motion.div>
+            ))}
          </div>
       </section>
 
