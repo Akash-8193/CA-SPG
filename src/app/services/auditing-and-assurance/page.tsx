@@ -4,8 +4,8 @@ import { useState, useRef } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
-import { Navbar } from "@/components/Navbar";
-import { Footer } from "@/components/Footer";
+
+
 
 // Data
 const carouselServices = [
@@ -97,7 +97,7 @@ const faqs = [
 ];
 
 export default function AuditingAssurancePage() {
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [openFaq, setOpenFaq] = useState<number | null>(0);
   const carouselRef = useRef<HTMLDivElement>(null);
 
   const scrollCarousel = (direction: 'left' | 'right') => {
@@ -112,7 +112,7 @@ export default function AuditingAssurancePage() {
 
   return (
     <main className="min-h-screen bg-[#FAFAFA]">
-      <Navbar />
+      
       
       {/* 1. Hero Section (Redesigned & Verified) */}
       <section className="relative pt-32 pb-16 lg:pt-48 lg:pb-24 bg-[#FFFDF5] overflow-hidden border-b border-gray-100">
@@ -337,7 +337,7 @@ export default function AuditingAssurancePage() {
         </div>
       </section>
 
-      <Footer />
+      
     </main>
   );
 }

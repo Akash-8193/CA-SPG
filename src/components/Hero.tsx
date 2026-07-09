@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
@@ -67,105 +67,123 @@ export function Hero() {
     const ctx = gsap.context(() => {
       gsap.fromTo(
         ".hero-animated-text",
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 1, stagger: 0.1, ease: "power3.out" }
+        { opacity: 0, y: 30, scale: 0.95 },
+        { opacity: 1, y: 0, scale: 1, duration: 1, stagger: 0.15, ease: "power3.out" }
       );
     }, textRef);
     return () => ctx.revert();
   }, [activeIdx]);
 
+  // Format title for premium look (mixing fonts)
+  const formatTitle = (title: string) => {
+    const parts = title.split(/(,|\.)/);
+    return parts.map((part, index) => {
+      if (part === ',' || part === '.') return <span key={index} className="text-white">{part}</span>;
+      // Make the second part italic serif
+      if (index > 0 && part.trim().length > 0) {
+        return <span key={index} className="font-serif italic text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-300 font-light">{part}</span>;
+      }
+      return <span key={index} className="font-black text-white">{part}</span>;
+    });
+  };
+
   return (
-    <section ref={containerRef} className="relative min-h-[100vh] lg:min-h-[110vh] w-full flex items-end justify-center overflow-hidden bg-[#FFFFFF]">
+    <section ref={containerRef} className="relative min-h-[100vh] lg:min-h-[100vh] w-full flex items-center justify-center overflow-hidden bg-black">
       
-      {/* Background Images with Crossfade */}
+      {/* Background Images with Slow Zoom (Ken Burns) and Crossfade */}
       {slides.map((slide, idx) => (
         <div 
           key={idx} 
           className={cn(
-            "absolute inset-0 z-0 h-[120%] w-full -top-[10%] transition-opacity duration-1000 ease-in-out",
-            activeIdx === idx ? "opacity-100" : "opacity-0"
+            "absolute inset-0 z-0 w-full h-full transition-opacity duration-1500 ease-in-out",
+            activeIdx === idx ? "opacity-100 z-10" : "opacity-0 z-0"
           )}
         >
-          <Image unoptimized 
-            src={slide.image} 
-            alt={slide.title} 
-            fill 
-            className="object-cover opacity-100"
-            priority={idx === 0}
-            quality={100}
-          />
+          <div className={cn("w-full h-full transform transition-transform duration-[10000ms] ease-linear", activeIdx === idx ? "scale-110" : "scale-100")}>
+            <Image 
+              unoptimized 
+              src={slide.image} 
+              alt={slide.title} 
+              fill 
+              className="object-cover"
+              priority={idx === 0}
+              quality={100}
+            />
+          </div>
         </div>
       ))}
-      {/* Gradient overlay changed to dark for natural contrast and rich images */}
-      <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A]/80 via-[#1A1A1A]/40 to-transparent z-0 pointer-events-none" />
+      
+      {/* Premium Dark Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-black/80 z-10 pointer-events-none mix-blend-multiply" />
+      <div className="absolute inset-0 bg-black/30 z-10 pointer-events-none" />
 
       {/* Content */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-40 pb-32 lg:pt-48 lg:pb-40 flex flex-col justify-end min-h-[100vh] lg:min-h-[110vh]">
-        <div ref={textRef} className="flex flex-col lg:flex-row lg:items-end justify-between gap-12">
+      <div className="relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center mt-20">
+        <div ref={textRef} className="flex flex-col items-center w-full max-w-5xl">
           
-          {/* Animated Content Wrapper */}
-          <div key={activeIdx} className="max-w-4xl">
-            <div className="hero-animated-text inline-flex items-center gap-4 mb-8 px-6 py-2.5 rounded-full backdrop-blur-md bg-[#1A1A1A]/30 border border-[#FFFFFF]/10 shadow-[0_4px_20px_rgba(0,0,0,0.1)]">
-              <span className="w-8 h-[1px] bg-[#FF3D3D] block" />
-              <p className="text-[#FFFFFF] tracking-[0.3em] uppercase text-[10px] md:text-xs font-bold pt-0.5">
-                Excellence by Method
-              </p>
-            </div>
-            <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-[#FFFFFF] leading-[1.1] mb-6 drop-shadow-lg">
-              {slides[activeIdx].title.split(/(\.|,)/).map((segment, i) => (
-                <span key={`${activeIdx}-${i}`} className="hero-animated-text inline-block mr-1">
-                  {segment}
-                </span>
-              ))}
-            </h1>
-            <p className="hero-animated-text text-[#FFFFFF]/90 leading-relaxed font-sans text-lg md:text-xl max-w-2xl mb-10 drop-shadow-md">
+          {/* Badge */}
+          <div className="hero-animated-text inline-flex items-center space-x-3 px-6 py-2.5 rounded-full backdrop-blur-xl bg-white/10 border border-white/20 mb-8 shadow-2xl">
+            <span className="w-2 h-2 rounded-full bg-[#FF3D3D] animate-pulse" />
+            <span className="text-white/90 tracking-[0.25em] uppercase text-xs md:text-sm font-bold">
+              Excellence by Method
+            </span>
+          </div>
+
+          {/* Main Title */}
+          <h1 key={`title-${activeIdx}`} className="hero-animated-text text-5xl sm:text-6xl lg:text-7xl xl:text-8xl leading-[1.1] mb-12 drop-shadow-2xl">
+            {formatTitle(slides[activeIdx].title)}
+          </h1>
+          
+          {/* Glassmorphism Card for Description & Buttons */}
+          <div className="hero-animated-text w-full max-w-3xl backdrop-blur-2xl bg-white/5 border border-white/10 rounded-[2.5rem] p-8 md:p-10 shadow-[0_30px_60px_rgba(0,0,0,0.4)]">
+            <p className="text-white/90 leading-relaxed font-sans text-lg md:text-xl lg:text-2xl mb-10 drop-shadow-md">
               {slides[activeIdx].description}
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               {slides[activeIdx].buttons.map((btn, i) => (
                 <Link 
                   key={`${activeIdx}-btn-${i}`}
                   href={btn.href} 
                   className={cn(
-                    "hero-animated-text group flex items-center justify-between border px-6 py-4 text-xs tracking-[0.2em] uppercase transition-all duration-500",
+                    "group flex items-center justify-center px-8 py-5 rounded-full text-sm tracking-[0.15em] uppercase font-bold transition-all duration-300 w-full sm:w-auto",
                     i === 0 
-                      ? "border-[#FF3D3D] bg-[#FF3D3D] text-[#FFFFFF] hover:bg-transparent hover:text-[#FF3D3D]" 
-                      : "border-[#FFFFFF]/30 text-[#FFFFFF] hover:border-[#FF3D3D] hover:text-[#FF3D3D] bg-[#1A1A1A]/20 backdrop-blur-sm"
+                      ? "bg-[#FF3D3D] text-white hover:bg-[#b90a2a] hover:shadow-[0_0_30px_rgba(255,61,61,0.5)] border border-transparent" 
+                      : "bg-white/10 text-white hover:bg-white hover:text-black border border-white/20 backdrop-blur-sm"
                   )}
                 >
-                  <span className="font-semibold">{btn.text}</span>
-                  <ArrowRight className="w-4 h-4 ml-6 transition-transform group-hover:translate-x-1" />
+                  <span>{btn.text}</span>
+                  <ArrowRight className={cn("w-4 h-4 ml-3 transition-transform duration-300 group-hover:translate-x-1", i === 0 ? "text-white" : "text-white group-hover:text-black")} />
                 </Link>
               ))}
-            </div>
-          </div>
-          
-          {/* Slider Controls */}
-          <div className="hero-animated-text flex flex-col items-start lg:items-end gap-6 shrink-0">
-            <div className="flex items-center gap-2">
-              {slides.map((_, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setActiveIdx(idx)}
-                  className="group py-2 px-1"
-                >
-                  <div className={cn(
-                    "h-[2px] transition-all duration-500",
-                    activeIdx === idx ? "w-12 bg-[#FF3D3D]" : "w-6 bg-[#FFFFFF]/40 group-hover:bg-[#FFFFFF]/80"
-                  )} />
-                </button>
-              ))}
-            </div>
-            <div className="flex items-center gap-4 text-[#FFFFFF]/80 font-serif text-sm">
-              <span className="text-[#FF3D3D] font-bold">{String(activeIdx + 1).padStart(2, '0')}</span>
-              <span className="w-8 h-[1px] bg-[#FFFFFF]/30" />
-              <span>{String(slides.length).padStart(2, '0')}</span>
             </div>
           </div>
 
         </div>
       </div>
+      
+      {/* Vertical Slider Controls */}
+      <div className="absolute right-8 top-1/2 -translate-y-1/2 z-30 hidden lg:flex flex-col items-center gap-6">
+        {slides.map((_, idx) => (
+          <button
+            key={idx}
+            onClick={() => setActiveIdx(idx)}
+            className="group flex flex-col items-center gap-2"
+          >
+            <span className={cn(
+              "text-xs font-bold font-mono transition-all duration-300",
+              activeIdx === idx ? "text-[#FF3D3D]" : "text-white/30 group-hover:text-white/60"
+            )}>
+              0{idx + 1}
+            </span>
+            <div className={cn(
+              "w-0.5 rounded-full transition-all duration-500",
+              activeIdx === idx ? "h-16 bg-[#FF3D3D] shadow-[0_0_10px_rgba(255,61,61,0.8)]" : "h-8 bg-white/20 group-hover:bg-white/40"
+            )} />
+          </button>
+        ))}
+      </div>
+
     </section>
   );
 }
