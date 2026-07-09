@@ -35,7 +35,7 @@ export function CTA() {
   }, []);
 
   return (
-    <section ref={containerRef} className="py-24 bg-[#FFFFFF] text-[#1A1A1A] relative overflow-hidden">
+    <section ref={containerRef} className="py-12 lg:py-16 bg-[#FFFFFF] text-[#1A1A1A] relative overflow-hidden">
       <div className="absolute inset-0 z-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
       
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center cta-fade">

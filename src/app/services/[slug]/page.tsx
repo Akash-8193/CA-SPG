@@ -59,7 +59,7 @@ export default function ServiceDetailPage() {
     <div ref={containerRef} className="min-h-screen bg-[#FFFFFF] font-sans pt-24 pb-16">
       
       {/* Hero Section */}
-      <section className="bg-[#FFFFFF] py-20 lg:py-32 px-4 relative overflow-hidden">
+      <section className="bg-[#FFFFFF] py-10 lg:py-16 lg:py-20 px-4 relative overflow-hidden">
         {/* Immersive Background Glows */}
         <div className="absolute top-[-20%] right-[-10%] w-[60%] h-[60%] bg-[radial-gradient(circle,_rgba(197,160,89,0.15)_0%,_rgba(10,25,47,0)_70%)] pointer-events-none" />
         <div className="absolute bottom-[-10%] left-[-10%] w-[50%] h-[50%] bg-[radial-gradient(circle,_rgba(29,53,87,0.3)_0%,_rgba(10,25,47,0)_70%)] pointer-events-none" />

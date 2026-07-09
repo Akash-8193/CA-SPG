@@ -103,7 +103,7 @@ export default function ESGPage() {
                <motion.div 
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, transition: { delay: 0.1 } }}
+                  viewport={{ once: true }} transition={{ delay: 0.1 }}
                   className="bg-white p-12 rounded-[2rem] border border-gray-100 shadow-sm hover:border-[#b90a2a] transition-colors group"
                >
                   <div className="w-16 h-16 bg-[#b90a2a]/10 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-[#b90a2a] transition-colors">

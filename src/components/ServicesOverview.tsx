@@ -20,7 +20,7 @@ export function ServicesOverview() {
   const activeService = servicesData[activeIdx];
 
   return (
-    <section id="services-overview" className="bg-[#FFFFFF] py-16 lg:py-24 font-sans text-[#1A1A1A]">
+    <section id="services-overview" className="bg-[#FFFFFF] py-16 lg:py-12 lg:py-16 font-sans text-[#1A1A1A]">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Main Section Header */}

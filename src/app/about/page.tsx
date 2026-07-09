@@ -156,7 +156,7 @@ export default function AboutPage() {
       <div className="relative z-20 bg-[#FFFFFF] rounded-t-[3rem] shadow-[0_-20px_50px_rgba(0,0,0,0.5)] pt-4">
         {/* About Our Firm Section */}
         <div className="bg-transparent pt-10">
-          <section className="py-16 lg:py-20 px-4 max-w-[1300px] mx-auto overflow-hidden">
+          <section className="py-16 lg:py-10 lg:py-16 px-4 max-w-[1300px] mx-auto overflow-hidden">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
               
               {/* Left Side: Content */}
@@ -315,7 +315,7 @@ export default function AboutPage() {
                 </div>
 
                 {/* Globe & Avatar */}
-                <div className="relative h-[400px] md:h-[450px] lg:h-[500px] w-full mt-0 fade-up">
+                <div className="relative h-[400px] md:h-[450px] lg:h-[400px] w-full mt-0 fade-up">
                   {/* Subtle globe overlay in background */}
                   <div className="absolute left-1/2 top-[5%] w-[90%] h-[90%] -translate-x-1/2 opacity-30 pointer-events-none flex items-center justify-center">
                     <div className="w-[300px] h-[300px] rounded-full border border-dashed border-white/20 animate-[spin_30s_linear_infinite]"></div>
@@ -401,7 +401,7 @@ export default function AboutPage() {
 
       <div className="relative z-20 bg-[#FFFFFF] shadow-[0_-10px_30px_rgba(0,0,0,0.1)]">
       {/* 4. Client Relationships Foundations */}
-      <section className="bg-[#FFFFFF] py-16 lg:py-20 px-4 overflow-hidden">
+      <section className="bg-[#FFFFFF] py-16 lg:py-10 lg:py-16 px-4 overflow-hidden">
         <div className="max-w-[1300px] mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
             
@@ -438,7 +438,7 @@ export default function AboutPage() {
         </section>
 
         {/* Services & Final Outro */}
-        <section className="bg-transparent py-16 lg:py-20 px-4 overflow-hidden">
+        <section className="bg-transparent py-16 lg:py-10 lg:py-16 px-4 overflow-hidden">
           <div className="max-w-[1300px] mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
               

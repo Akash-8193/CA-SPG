@@ -218,7 +218,7 @@ export default function PartnersPage() {
       </div>
       
       {/* 3. Associate Network Section */}
-      <div className="relative z-20 bg-[#FFFFFF] py-20 px-4 border-t border-gray-100 shadow-[0_-10px_30px_rgba(0,0,0,0.05)] overflow-hidden">
+      <div className="relative z-20 bg-[#FFFFFF] py-10 lg:py-16 px-4 border-t border-gray-100 shadow-[0_-10px_30px_rgba(0,0,0,0.05)] overflow-hidden">
         <div className="max-w-[1300px] w-full mx-auto text-center mb-16 space-y-4">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#1A1A1A] tracking-tight">
             Associate Network

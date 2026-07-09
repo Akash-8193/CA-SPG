@@ -75,7 +75,7 @@ export default function IpoServicePage() {
       </section>
 
       {/* 2. Section 1: Preparation (Asymmetric Bento Grid) */}
-      <section className="py-24 bg-white relative">
+      <section className="py-12 lg:py-16 bg-white relative">
          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             
             <div className="mb-16">
@@ -163,7 +163,7 @@ export default function IpoServicePage() {
       </section>
 
       {/* 3. Section 2: Advisory (Complex Overlapping Layered Layout) */}
-      <section className="py-24 bg-white relative">
+      <section className="py-12 lg:py-16 bg-white relative">
          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             
             <div className="mb-16 text-center">
@@ -229,7 +229,7 @@ export default function IpoServicePage() {
       </section>
 
       {/* 4. Section 3: Restructuring (Clean Premium Split Layout) */}
-      <section className="py-24 bg-white relative">
+      <section className="py-12 lg:py-16 bg-white relative">
          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div 
                initial={{ opacity: 0, y: 40 }}
@@ -274,7 +274,7 @@ export default function IpoServicePage() {
       </section>
 
       {/* 5. Section 4: FAQ (Rich Design with Sidebar Image) */}
-      <section className="py-24 bg-[#F5F5F7]">
+      <section className="py-12 lg:py-16 bg-[#F5F5F7]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="flex flex-col lg:flex-row gap-16">

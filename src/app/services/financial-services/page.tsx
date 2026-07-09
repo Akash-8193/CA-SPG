@@ -156,7 +156,7 @@ export default function FinancialServicesPage() {
       </section>
 
       {/* 2. First 7 Services: Interactive Sticky Tabs (LIGHT THEME) */}
-      <section className="py-24 bg-[#F8F9FA] relative border-b border-gray-200">
+      <section className="py-12 lg:py-16 bg-[#F8F9FA] relative border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           
           <div className="text-center mb-20">
@@ -342,7 +342,7 @@ export default function FinancialServicesPage() {
       </section>
 
       {/* 4. FAQ Section (Unified Light Design) */}
-      <section className="py-24 bg-[#FFF6F6] border-t border-gray-200">
+      <section className="py-12 lg:py-16 bg-[#FFF6F6] border-t border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">

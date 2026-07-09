@@ -71,7 +71,7 @@ export default function SoftwareConsultancyPage() {
       </section>
 
       {/* 2. Section 1: SAP Installation ("Floating Tech Screen" Layout - LIGHT THEME) */}
-      <section className="py-24 lg:py-40 relative bg-white">
+      <section className="py-12 lg:py-16 lg:py-10 lg:py-16 relative bg-white">
          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             
             <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
@@ -151,7 +151,7 @@ export default function SoftwareConsultancyPage() {
       </section>
 
       {/* 3. Section 2: After Sales Service ("Animated Data Flow" Layout - LIGHT THEME) */}
-      <section className="py-24 lg:py-40 relative bg-[#F9F9F9] border-t border-gray-200">
+      <section className="py-12 lg:py-16 lg:py-10 lg:py-16 relative bg-[#F9F9F9] border-t border-gray-200">
          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             
             <div className="flex flex-col-reverse lg:flex-row items-center gap-16 lg:gap-0">
@@ -223,7 +223,7 @@ export default function SoftwareConsultancyPage() {
       </section>
 
       {/* 4. Section 3: FAQ (Unified Brand Colors) */}
-      <section className="py-24 bg-white relative">
+      <section className="py-12 lg:py-16 bg-white relative">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
         
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

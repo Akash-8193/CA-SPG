@@ -104,7 +104,7 @@ export default function DirectTaxPage() {
       </section>
 
       {/* 2. Core Services: Apple-style Sticky Scroll */}
-      <section className="relative py-24 bg-white border-t-4 border-[#FF3D3D]">
+      <section className="relative py-12 lg:py-16 bg-white border-t-4 border-[#FF3D3D]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 relative items-start">
@@ -229,7 +229,7 @@ export default function DirectTaxPage() {
         </div>
       </section>
       {/* 4. Strategic Tax Consulting (Items 7-11) */}
-      <section className="py-24 bg-[#FAFAFA] border-t border-gray-200 overflow-hidden relative">
+      <section className="py-12 lg:py-16 bg-[#FAFAFA] border-t border-gray-200 overflow-hidden relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-extrabold text-[#1A1A1A] mb-4">Strategic Tax Consulting</h2>
@@ -254,7 +254,7 @@ export default function DirectTaxPage() {
       </section>
 
       {/* 5. FAQ Section (Unified Design) */}
-      <section className="py-24 bg-[#FFF6F6] border-t border-gray-100">
+      <section className="py-12 lg:py-16 bg-[#FFF6F6] border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">

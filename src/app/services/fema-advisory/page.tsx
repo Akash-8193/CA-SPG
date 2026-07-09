@@ -62,7 +62,7 @@ export default function FemaAdvisoryPage() {
       </section>
 
       {/* 2. FDI Compliances ("Awwwards Magazine" Layout) */}
-      <section ref={containerRef} className="py-16 lg:py-20 bg-white relative">
+      <section ref={containerRef} className="py-16 lg:py-10 lg:py-16 bg-white relative">
          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
                
@@ -117,7 +117,7 @@ export default function FemaAdvisoryPage() {
       </section>
 
       {/* 3. ODI & ECB Advisory ("Floating Avatar" Layout) */}
-      <section className="py-16 lg:py-24 bg-[#FCFCFC] border-y border-gray-100 relative overflow-hidden">
+      <section className="py-16 lg:py-12 lg:py-16 bg-[#FCFCFC] border-y border-gray-100 relative overflow-hidden">
          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="relative bg-white rounded-[3rem] shadow-[0_20px_60px_rgba(0,0,0,0.05)] border border-gray-100 flex flex-col lg:flex-row items-center">
                
@@ -160,7 +160,7 @@ export default function FemaAdvisoryPage() {
       </section>
 
       {/* 4. RBI Approvals ("Clean Bento Grid") */}
-      <section className="py-16 lg:py-20 bg-white relative">
+      <section className="py-16 lg:py-10 lg:py-16 bg-white relative">
          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
                
@@ -184,7 +184,7 @@ export default function FemaAdvisoryPage() {
                <motion.div 
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, transition: { delay: 0.1 } }}
+                  viewport={{ once: true }} transition={{ delay: 0.1 }}
                   className="lg:col-span-5 h-[400px] lg:h-auto rounded-[2.5rem] overflow-hidden relative shadow-lg"
                >
                   <Image 
@@ -201,7 +201,7 @@ export default function FemaAdvisoryPage() {
       </section>
 
       {/* 5. FEMA Audit & Repatriation ("Sticky Scroll") */}
-      <section className="py-16 lg:py-20 bg-[#F9F9F9] border-y border-gray-200">
+      <section className="py-16 lg:py-10 lg:py-16 bg-[#F9F9F9] border-y border-gray-200">
          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col lg:flex-row gap-16 lg:gap-24">
                
@@ -264,7 +264,7 @@ export default function FemaAdvisoryPage() {
                   <motion.div 
                      initial={{ opacity: 0, x: 50 }}
                      whileInView={{ opacity: 1, x: 0 }}
-                     viewport={{ once: true, transition: { delay: 0.1 } }}
+                     viewport={{ once: true }} transition={{ delay: 0.1 }}
                      className="bg-[#FCFCFC] p-10 lg:p-12 rounded-[2rem] shadow-sm border border-gray-100"
                   >
                      <div className="w-12 h-12 bg-[#b90a2a]/10 rounded-full flex items-center justify-center mb-6">
@@ -282,7 +282,7 @@ export default function FemaAdvisoryPage() {
       </section>
 
       {/* 6. Litigation & Representation ("Avatar Presenter 2") */}
-      <section className="py-16 lg:py-20 bg-white relative overflow-hidden">
+      <section className="py-16 lg:py-10 lg:py-16 bg-white relative overflow-hidden">
          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col-reverse lg:flex-row items-center">
                

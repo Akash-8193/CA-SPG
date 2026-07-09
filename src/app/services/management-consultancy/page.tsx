@@ -80,7 +80,7 @@ export default function ManagementConsultancyPage() {
       </section>
 
       {/* 2. Component A: Circular Image Left, Text Right (Screenshot 1) */}
-      <section className="py-24 bg-white overflow-hidden relative">
+      <section className="py-12 lg:py-16 bg-white overflow-hidden relative">
          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
                
@@ -212,7 +212,7 @@ export default function ManagementConsultancyPage() {
       </section>
 
       {/* 4. Component A (Reversed): Circular Image Left, Text Right (Screenshot 4) */}
-      <section className="py-24 bg-white overflow-hidden">
+      <section className="py-12 lg:py-16 bg-white overflow-hidden">
          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
                
@@ -264,7 +264,7 @@ export default function ManagementConsultancyPage() {
       </section>
 
       {/* 5. Component C: Timeline Section (Screenshot 5 - Exact Match) */}
-      <section className="py-24 bg-white relative overflow-hidden">
+      <section className="py-12 lg:py-16 bg-white relative overflow-hidden">
          {/* Subtle background diagonal shapes matching screenshot */}
          <div className="absolute inset-0 opacity-[0.03] z-0 pointer-events-none" style={{ background: 'linear-gradient(45deg, #000 25%, transparent 25%, transparent 75%, #000 75%, #000), linear-gradient(45deg, #000 25%, transparent 25%, transparent 75%, #000 75%, #000)', backgroundSize: '60px 60px', backgroundPosition: '0 0, 30px 30px' }} />
 
@@ -350,7 +350,7 @@ export default function ManagementConsultancyPage() {
       </section>
 
       {/* 6. FAQ Section (Unified Light Design) */}
-      <section className="py-24 bg-[#FFF6F6] border-t border-gray-200">
+      <section className="py-12 lg:py-16 bg-[#FFF6F6] border-t border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
