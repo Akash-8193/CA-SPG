@@ -59,50 +59,54 @@ export function VisionMission() {
   }, []);
 
   return (
-    <section ref={containerRef} className="h-screen bg-deep-navy overflow-hidden flex items-center relative">
-      <div className="absolute top-12 left-12 md:top-20 md:left-20 z-10 mix-blend-difference">
-        <p className="text-luxury-gold tracking-[0.3em] uppercase text-xs font-semibold">Who We Are</p>
-      </div>
-
-      <div ref={scrollRef} className="flex flex-nowrap h-full items-center pl-[10vw] md:pl-[20vw] pr-[20vw]">
-        
-        {/* Intro Slide */}
-        <div className="w-[80vw] md:w-[60vw] shrink-0 mr-32 flex flex-col justify-center h-full">
-          <h2 className="font-serif text-[8vw] md:text-[5vw] text-white leading-[1.1] mb-8">
-            Excellence isn't a metric. <br/>
-            <span className="italic text-slate-400">It's our method.</span>
+    <div className="relative w-full">
+      <section ref={containerRef} className="h-screen w-full bg-[#FFFFFF] overflow-hidden flex items-center relative">
+        <div className="absolute top-12 left-6 md:top-16 md:left-12 z-20">
+          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-[#1A1A1A] drop-shadow-sm">
+            <span className="text-[#FF3D3D] text-4xl md:text-5xl lg:text-6xl">W</span>ho We Are
           </h2>
         </div>
 
-        {/* Content Slides */}
-        {items.map((item, idx) => (
-          <div key={idx} className="w-[90vw] md:w-[70vw] shrink-0 flex flex-col md:flex-row items-center gap-12 md:gap-24 mr-24 h-[70vh]">
-            
-            <div className="relative w-full md:w-1/2 h-1/2 md:h-full rounded-sm overflow-hidden">
-              <Image
-                src={item.img}
-                alt={item.title}
-                fill
-                className="object-cover grayscale hover:grayscale-0 transition-all duration-700"
-              />
-            </div>
-
-            <div className="w-full md:w-1/2 flex flex-col justify-center">
-              <span className="text-luxury-gold font-serif text-6xl md:text-8xl opacity-20 leading-none mb-4">
-                {item.num}
-              </span>
-              <h3 className="font-serif text-3xl md:text-5xl text-white mb-6">
-                {item.title}
-              </h3>
-              <p className="text-white/60 text-lg md:text-xl font-light leading-relaxed max-w-md">
-                {item.description}
-              </p>
-            </div>
-
+        <div ref={scrollRef} className="flex flex-nowrap h-full items-center pl-[10vw] md:pl-[20vw] pr-[20vw]">
+          
+          {/* Intro Slide */}
+          <div className="w-[80vw] md:w-[60vw] shrink-0 mr-32 flex flex-col justify-center h-full">
+            <h2 className="font-serif text-[8vw] md:text-[5vw] text-[#1A1A1A] leading-[1.1] mb-8">
+              Excellence isn't a metric. <br/>
+              <span className="italic text-[#1A1A1A]/80">It's our method.</span>
+            </h2>
           </div>
-        ))}
 
-      </div>
-    </section>
+          {/* Content Slides */}
+          {items.map((item, idx) => (
+            <div key={idx} className="w-[90vw] md:w-[70vw] shrink-0 flex flex-col md:flex-row items-center gap-12 md:gap-24 mr-24 h-[70vh]">
+              
+              <div className="relative w-full md:w-1/2 h-1/2 md:h-full rounded-sm overflow-hidden">
+                <Image unoptimized
+                  src={item.img}
+                  alt={item.title}
+                  fill
+                  className="object-cover transition-all duration-700"
+                />
+              </div>
+
+              <div className="w-full md:w-1/2 flex flex-col justify-center">
+                <span className="text-[#FF3D3D] font-serif text-6xl md:text-8xl opacity-60 leading-none mb-4 drop-shadow-sm">
+                  {item.num}
+                </span>
+                <h3 className="font-serif text-3xl md:text-5xl text-[#1A1A1A] mb-6">
+                  {item.title}
+                </h3>
+                <p className="text-[#1A1A1A]/70 text-lg md:text-xl font-light leading-relaxed max-w-md">
+                  {item.description}
+                </p>
+              </div>
+
+            </div>
+          ))}
+
+        </div>
+      </section>
+    </div>
   );
 }

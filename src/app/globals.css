@@ -1,11 +1,11 @@
 @import "tailwindcss";
 
 @theme {
-  --color-warm-white: #FAFAFA;
+  --color-warm-white: #FFFFFF;
   --color-ivory: #FFFFF0;
-  --color-deep-navy: #0A192F;
-  --color-royal-blue: #1D3557;
-  --color-luxury-gold: #C5A059;
+  --color-deep-navy: #1A1A1A;
+  --color-royal-blue: #1A1A1A;
+  --color-luxury-gold: #FF3D3D;
   --color-slate-gray: #708090;
   --color-soft-beige: #F5F5DC;
   
@@ -14,8 +14,8 @@
 }
 
 :root {
-  --background: #FAFAFA;
-  --foreground: #0A192F;
+  --background: #FFFFFF;
+  --foreground: #1A1A1A;
 }
 
 /* Base resets & typography */
@@ -30,6 +30,13 @@
   
   p {
     @apply text-slate-gray leading-relaxed;
+  }
+
+  .testimonial-image-container::before {
+    @apply content-[''] absolute -inset-1 border-2 border-luxury-gold/30 rounded-full opacity-0 scale-95 transition-all duration-300;
+  }
+  .testimonial-image-container:hover::before {
+    @apply opacity-100 scale-100;
   }
 }
 
@@ -52,4 +59,19 @@ html.lenis, html.lenis body {
 
 .lenis.lenis-smooth iframe {
   pointer-events: none;
+}
+
+/* Custom Scrollbar for Services Template */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 61, 61, 0.5); /* new red with opacity */
+  border-radius: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 61, 61, 1); /* solid new red */
 }

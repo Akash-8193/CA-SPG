@@ -3,58 +3,83 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Handshake } from "lucide-react";
+import { Landmark, Building2, Wallet } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-const banks = [
-  { name: "SBI", fullName: "State Bank of India", color: "text-blue-600" },
-  { name: "PNB", fullName: "Punjab National Bank", color: "text-red-700" },
-  { name: "Bank of Baroda", fullName: "Bank of Baroda", color: "text-orange-500" },
-  { name: "HDFC BANK", fullName: "HDFC Bank", color: "text-blue-800" },
-  null, // Center item
-  { name: "ICICI Bank", fullName: "ICICI Bank", color: "text-orange-600" },
-  { name: "AXIS BANK", fullName: "Axis Bank", color: "text-red-800" },
-  { name: "YES BANK", fullName: "Yes Bank", color: "text-blue-700" },
-  { name: "IDFC FIRST", fullName: "IDFC First Bank", color: "text-red-900" },
+const networkData = [
+  {
+    category: "Public Sector Banks",
+    accent: "bg-[#FF3D3D]",
+    iconBg: "bg-white/5 border border-white/10",
+    iconColor: "text-white",
+    icon: Building2,
+    banks: [
+      "State Bank of India",
+      "Punjab National Bank",
+      "Bank of Baroda",
+      "Union Bank",
+      "Bank of India",
+      "Bank of Maharashtra",
+      "Punjab & Sind Bank"
+    ]
+  },
+  {
+    category: "Private Banks & NBFCs",
+    accent: "bg-[#FF3D3D]",
+    iconBg: "bg-[#FF3D3D]/10 border border-[#FF3D3D]/30 shadow-[0_0_20px_rgba(255,61,61,0.2)]",
+    iconColor: "text-[#FF3D3D]",
+    icon: Landmark,
+    banks: [
+      "IDFC First Bank",
+      "Axis Bank",
+      "HDFC",
+      "Yes Bank",
+      "RBL Bank",
+      "Standard Chartered Bank",
+      "Tata Capital Ltd",
+      "Bajaj Finance",
+      "Aditya Birla Finance",
+      "India Bulls"
+    ]
+  },
+  {
+    category: "Specialized Lenders",
+    accent: "bg-[#FF3D3D]",
+    iconBg: "bg-white/5 border border-white/10",
+    iconColor: "text-white",
+    icon: Wallet,
+    banks: [
+      "SIDBI",
+      "LIC",
+      "Power Finance Corporation"
+    ]
+  }
 ];
 
 export function Network() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Lines animation
+      // 3D Entrance Animation
       gsap.fromTo(
-        ".connecting-line",
-        { strokeDasharray: "0, 1000" },
-        {
-          strokeDasharray: "10, 10",
-          duration: 1.5,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: "top 70%",
-          }
-        }
-      );
-
-      // Hexagons animation
-      gsap.fromTo(
-        ".hex-card",
-        { opacity: 0, scale: 0.8 },
+        ".network-3d-card",
+        { opacity: 0, y: 80, rotateX: 30, transformPerspective: 1000 },
         {
           opacity: 1,
-          scale: 1,
-          duration: 0.8,
-          stagger: 0.1,
-          ease: "back.out(1.2)",
+          y: 0,
+          rotateX: 0,
+          duration: 1.2,
+          stagger: 0.2,
+          ease: "power3.out",
           scrollTrigger: {
             trigger: containerRef.current,
-            start: "top 70%",
+            start: "top 75%",
           }
         }
       );
@@ -63,85 +88,111 @@ export function Network() {
     return () => ctx.revert();
   }, []);
 
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>, index: number) => {
+    const card = cardRefs.current[index];
+    if (!card) return;
+
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+
+    gsap.to(card, {
+      rotateX: -y / 30,
+      rotateY: x / 30,
+      duration: 0.5,
+      ease: "power2.out",
+      transformPerspective: 1000,
+    });
+  };
+
+  const handleMouseLeave = (index: number) => {
+    const card = cardRefs.current[index];
+    if (!card) return;
+
+    gsap.to(card, {
+      rotateX: 0,
+      rotateY: 0,
+      duration: 1,
+      ease: "elastic.out(1, 0.3)",
+    });
+  };
+
   return (
-    <section ref={containerRef} className="py-24 md:py-32 bg-[#FAFAFA] relative">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section ref={containerRef} className="pt-24 md:pt-32 pb-16 md:pb-24 bg-[#0A0A0A] relative overflow-hidden">
+      
+      {/* Premium Background Elements */}
+      <div className="absolute inset-0 opacity-[0.05] bg-[url('/grid-pattern.svg')] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#FF3D3D]/10 rounded-full blur-[150px] pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Headers */}
+        {/* Header */}
         <div className="text-center mb-16 md:mb-24">
-          <p className="text-luxury-gold tracking-[0.25em] uppercase text-[10px] md:text-xs font-bold mb-4">
-            STRATEGIC ALLIANCES
+          <p className="text-[#FF3D3D] tracking-[0.3em] uppercase text-[10px] md:text-xs font-bold mb-4 drop-shadow-sm">
+            Strategic Alliances
           </p>
-          <h2 className="font-serif text-3xl md:text-5xl text-deep-navy font-medium mb-6">
-            Connected. Collaborative. Committed.
+          <h2 className="font-serif text-3xl md:text-5xl text-white font-medium mb-6">
+            Our Network of Partners
           </h2>
-          <p className="text-slate-500 max-w-2xl mx-auto text-sm md:text-base font-light">
-            Our alliances reflect our commitment to deliver comprehensive, innovative and reliable financial solutions.
+          <p className="text-white/60 max-w-2xl mx-auto text-sm md:text-[17px] font-light leading-[1.8]">
+            We collaborate with India's most trusted financial institutions to deliver comprehensive, reliable, and scalable funding solutions for your business.
           </p>
         </div>
 
-        {/* 3x3 Grid Area */}
-        <div className="relative max-w-4xl mx-auto">
-          
-          {/* SVG Connecting Lines */}
-          <svg className="absolute inset-0 w-full h-full pointer-events-none z-0" style={{ filter: "drop-shadow(0px 2px 2px rgba(0,0,0,0.05))" }}>
-            <g className="stroke-luxury-gold/40" strokeWidth="1.5" strokeLinecap="round">
-              {/* Top Row */}
-              <line className="connecting-line" x1="50%" y1="50%" x2="16.66%" y2="16.66%" />
-              <line className="connecting-line" x1="50%" y1="50%" x2="50%" y2="16.66%" />
-              <line className="connecting-line" x1="50%" y1="50%" x2="83.33%" y2="16.66%" />
+        {/* 3D Cards Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10 [perspective:2000px]">
+          {networkData.map((group, idx) => (
+            <div 
+              key={idx}
+              ref={el => { cardRefs.current[idx] = el }}
+              onMouseMove={(e) => handleMouseMove(e, idx)}
+              onMouseLeave={() => handleMouseLeave(idx)}
+              className="network-3d-card group relative h-full rounded-xl bg-white/5 backdrop-blur-md border border-white/10 p-8 transform-gpu transition-all duration-300 shadow-[0_8px_30px_rgba(0,0,0,0.12)] hover:shadow-[0_20px_40px_rgba(255,61,61,0.15)] hover:border-[#FF3D3D]/30 hover:bg-white/[0.07]"
+              style={{ transformStyle: "preserve-3d" }}
+            >
               
-              {/* Middle Row */}
-              <line className="connecting-line" x1="50%" y1="50%" x2="16.66%" y2="50%" />
-              <line className="connecting-line" x1="50%" y1="50%" x2="83.33%" y2="50%" />
-              
-              {/* Bottom Row */}
-              <line className="connecting-line" x1="50%" y1="50%" x2="16.66%" y2="83.33%" />
-              <line className="connecting-line" x1="50%" y1="50%" x2="50%" y2="83.33%" />
-              <line className="connecting-line" x1="50%" y1="50%" x2="83.33%" y2="83.33%" />
-            </g>
-          </svg>
-
-          {/* Hexagon Grid */}
-          <div className="grid grid-cols-3 gap-4 md:gap-8 relative z-10">
-            {banks.map((bank, index) => {
-              
-              // Center Highlight Item
-              if (index === 4) {
-                return (
-                  <div key={index} className="hex-card aspect-[5/3] md:aspect-[2/1] relative flex items-center justify-center filter drop-shadow-[0_10px_15px_rgba(0,0,0,0.15)] group">
-                    <div 
-                      className="absolute inset-0 bg-deep-navy border-2 border-luxury-gold flex flex-col items-center justify-center p-4 text-center transition-transform duration-300 group-hover:scale-105"
-                      style={{ clipPath: "polygon(15% 0%, 85% 0%, 100% 50%, 85% 100%, 15% 100%, 0% 50%)" }}
-                    >
-                      <Handshake className="w-8 h-8 md:w-10 md:h-10 text-white mb-2" />
-                      <p className="text-white font-serif text-sm md:text-lg leading-tight">
-                        Partnerships<br/>That Drive<br/>Progress
-                      </p>
-                    </div>
+              {/* Inner floating content */}
+              <div className="relative h-full flex flex-col" style={{ transform: "translateZ(40px)" }}>
+                
+                {/* Header Section */}
+                <div className="flex items-center gap-5 mb-8">
+                  <div className={cn("w-14 h-14 rounded-full flex items-center justify-center shrink-0 transition-colors duration-500", group.iconBg)}>
+                    <group.icon className={cn("w-6 h-6", group.iconColor)} />
                   </div>
-                );
-              }
-
-              // Normal Bank Items
-              return (
-                <div key={index} className="hex-card aspect-[5/3] md:aspect-[2/1] relative flex items-center justify-center filter drop-shadow-[0_8px_15px_rgba(0,0,0,0.06)] group">
-                  <div 
-                    className="absolute inset-0 bg-white flex flex-col items-center justify-center p-2 md:p-4 text-center transition-transform duration-300 group-hover:scale-105"
-                    style={{ clipPath: "polygon(15% 0%, 85% 0%, 100% 50%, 85% 100%, 15% 100%, 0% 50%)" }}
-                  >
-                    <span className={cn("font-bold text-lg md:text-2xl font-sans tracking-tight", bank?.color)}>
-                      {bank?.name}
-                    </span>
-                    <span className="hidden md:block text-[10px] text-slate-400 mt-1 uppercase tracking-wider font-medium">
-                      {bank?.fullName}
-                    </span>
-                  </div>
+                  <h3 className="font-serif text-xl md:text-2xl text-white group-hover:text-[#FF3D3D] transition-colors duration-300">
+                    {group.category}
+                  </h3>
                 </div>
-              );
-            })}
-          </div>
 
+                {/* Separator Line */}
+                <div className="w-full h-[1px] bg-white/10 mb-8 relative overflow-hidden">
+                  <div className={cn("absolute top-0 left-0 h-full w-12 group-hover:w-full transition-all duration-700 ease-in-out bg-gradient-to-r from-[#FF3D3D] to-transparent")} />
+                </div>
+
+                {/* Banks List */}
+                <ul className="flex-1 space-y-4">
+                  {group.banks.map((bank, bankIdx) => (
+                    <li 
+                      key={bankIdx} 
+                      className="flex items-center text-white/60 hover:text-white transition-colors group/item"
+                    >
+                      <svg className="w-4 h-4 mr-4 text-[#FF3D3D] opacity-0 -translate-x-2 transition-all duration-300 group-hover/item:opacity-100 group-hover/item:translate-x-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                      <div className="w-1.5 h-1.5 rounded-full bg-white/20 mr-4 transition-all duration-300 group-hover/item:hidden" />
+                      <span className="font-sans font-light text-sm lg:text-[15px] tracking-wide group-hover/item:-translate-x-2 transition-transform duration-300">
+                        {bank}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+
+              </div>
+
+              {/* Shine effect overlay */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/5 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none rounded-xl" />
+            </div>
+          ))}
         </div>
 
       </div>

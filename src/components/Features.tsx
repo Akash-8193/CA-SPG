@@ -31,12 +31,13 @@ export function Features() {
   const [activeIdx, setActiveIdx] = useState(0);
 
   return (
-    <section className="h-screen w-full bg-deep-navy flex flex-col md:flex-row overflow-hidden relative">
+    <section className="h-screen w-full bg-[#FFFFFF] flex flex-col md:flex-row overflow-hidden relative">
 
       {/* Absolute Pinned Heading */}
-      <div className="absolute top-8 left-6 md:top-16 md:left-12 z-20 pointer-events-none mix-blend-difference">
-        <p className="text-luxury-gold tracking-[0.3em] uppercase text-xs font-semibold mb-2">Our Core Expertise</p>
-        <h2 className="font-serif text-3xl md:text-5xl text-white">What We Do</h2>
+      <div className="absolute top-8 left-6 md:top-16 md:left-12 z-20 pointer-events-none">
+        <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-white drop-shadow-md">
+          <span className="text-[#FF3D3D] text-4xl md:text-5xl lg:text-6xl">W</span>hat We Do
+        </h2>
       </div>
 
       {features.map((feature, idx) => (
@@ -49,30 +50,30 @@ export function Features() {
           )}
         >
           {/* Background Image */}
-          <div className="absolute inset-0 z-0">
-            <Image
+          <div className="absolute inset-0 z-0 bg-[#1A1A1A]">
+            <Image unoptimized
               src={feature.img}
               alt={feature.title}
               fill
               className="object-cover transition-transform duration-1000 ease-out scale-110"
               style={{
                 transform: activeIdx === idx ? "scale(1)" : "scale(1.1)",
-                opacity: activeIdx === idx ? 0.6 : 0.2
+                opacity: activeIdx === idx ? 0.8 : 0.4
               }}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-deep-navy via-deep-navy/40 to-transparent" />
-            <div className="absolute inset-0 bg-deep-navy/20 mix-blend-multiply" />
+            {/* Dark gradient instead of white for clear, rich images */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A] via-[#1A1A1A]/30 to-transparent" />
           </div>
 
           {/* Content */}
-          <div className="relative z-10 p-6 md:p-12 w-full">
+          <div className="relative z-10 p-6 md:p-12 w-full text-white">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
 
               <div className="flex gap-6 items-end">
-                <span className="font-serif text-white/40 text-4xl hidden md:block">0{idx + 1}</span>
+                <span className="font-serif text-white/80 text-4xl hidden md:block drop-shadow-sm">0{idx + 1}</span>
                 <div>
                   <h3 className={cn(
-                    "font-serif text-3xl md:text-5xl text-white transition-all duration-700 whitespace-nowrap",
+                    "font-serif text-3xl md:text-5xl text-white transition-all duration-700 whitespace-nowrap drop-shadow-md",
                     activeIdx !== idx && "md:[writing-mode:vertical-rl] md:rotate-180 md:-translate-y-8"
                   )}>
                     {feature.title}
@@ -82,7 +83,7 @@ export function Features() {
                     "overflow-hidden transition-all duration-700",
                     activeIdx === idx ? "max-h-40 opacity-100 mt-4" : "max-h-0 opacity-0 mt-0"
                   )}>
-                    <p className="text-white/80 font-light max-w-md">
+                    <p className="text-white/70 font-light max-w-md drop-shadow-md">
                       {feature.description}
                     </p>
                   </div>
@@ -93,8 +94,8 @@ export function Features() {
           </div>
 
           {/* Border separator */}
-          <div className="absolute right-0 top-0 bottom-0 w-[1px] bg-white/10 hidden md:block" />
-          <div className="absolute left-0 right-0 bottom-0 h-[1px] bg-white/10 md:hidden" />
+          <div className="absolute right-0 top-0 bottom-0 w-[1px] bg-[#1A1A1A]/10 hidden md:block" />
+          <div className="absolute left-0 right-0 bottom-0 h-[1px] bg-[#1A1A1A]/10 md:hidden" />
         </div>
       ))}
 

@@ -47,8 +47,8 @@ export function Navbar() {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
         scrolled 
-          ? "bg-warm-white/90 backdrop-blur-md shadow-sm py-4" 
-          : "bg-transparent py-6"
+          ? "bg-[#FFFFFF]/95 backdrop-blur-xl shadow-md py-4" 
+          : "bg-gradient-to-b from-[#1A1A1A]/80 to-transparent py-6"
       )}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -56,13 +56,13 @@ export function Navbar() {
           <Link href="/" className="group relative z-50 flex flex-col">
             <span className={cn(
               "font-serif font-bold text-2xl tracking-widest transition-colors duration-300",
-              scrolled ? "text-deep-navy" : "text-white"
+              scrolled ? "text-[#1A1A1A]" : "text-white"
             )}>
               SPGK
             </span>
             <span className={cn(
               "text-[0.6rem] tracking-[0.2em] uppercase transition-colors duration-300",
-              scrolled ? "text-slate-gray" : "text-white/80"
+              scrolled ? "text-[#1A1A1A]/80" : "text-white/70"
             )}>
               & Associates
             </span>
@@ -71,12 +71,16 @@ export function Navbar() {
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
-              <div key={link.name} className="relative group">
+              <div key={link.name} className="relative group flex items-center">
                 <Link
                   href={link.href}
                   className={cn(
-                    "text-sm font-medium tracking-wide uppercase transition-colors hover:text-luxury-gold flex items-center gap-1",
-                    scrolled ? "text-deep-navy" : "text-white"
+                    "text-sm font-medium tracking-wide uppercase transition-all duration-300 flex items-center gap-1",
+                    link.name === "Contact"
+                      ? scrolled 
+                        ? "bg-[#1A1A1A] text-white px-5 py-2.5 rounded-[1px] hover:bg-[#FF3D3D] hover:shadow-lg hover:-translate-y-0.5"
+                        : "bg-white text-[#1A1A1A] px-5 py-2.5 rounded-[1px] hover:bg-[#FF3D3D] hover:text-white hover:shadow-lg hover:-translate-y-0.5"
+                      : cn(scrolled ? "text-[#1A1A1A]" : "text-white/80", "hover:text-[#FF3D3D]")
                   )}
                 >
                   {link.name}
@@ -90,7 +94,7 @@ export function Navbar() {
                         <Link
                           key={subLink.name}
                           href={subLink.href}
-                          className="text-sm text-slate-gray hover:text-luxury-gold hover:translate-x-1 transition-all duration-200 block py-1"
+                          className="text-sm text-[#1A1A1A]/70 hover:text-[#FF3D3D] hover:translate-x-1 transition-all duration-200 block py-1"
                         >
                           {subLink.name}
                         </Link>
@@ -105,8 +109,7 @@ export function Navbar() {
           {/* Mobile Menu Button */}
           <button 
             className={cn(
-              "md:hidden relative z-50 p-2",
-              scrolled ? "text-deep-navy" : "text-white"
+              "md:hidden relative z-50 p-2 text-[#1A1A1A]"
             )}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
@@ -117,7 +120,7 @@ export function Navbar() {
 
       {/* Mobile Menu */}
       <div className={cn(
-        "fixed inset-0 bg-deep-navy z-40 transition-transform duration-500 ease-in-out md:hidden flex flex-col items-center justify-center space-y-8",
+        "fixed inset-0 bg-[#FFFFFF] z-40 transition-transform duration-500 ease-in-out md:hidden flex flex-col items-center justify-center space-y-8",
         mobileMenuOpen ? "translate-x-0" : "translate-x-full"
       )}>
         {navLinks.map((link) => (
@@ -125,7 +128,7 @@ export function Navbar() {
             key={link.name}
             href={link.href}
             onClick={() => setMobileMenuOpen(false)}
-            className="text-white text-2xl font-serif tracking-widest hover:text-luxury-gold transition-colors"
+            className="text-[#1A1A1A] text-2xl font-serif tracking-widest hover:text-[#FF3D3D] transition-colors"
           >
             {link.name}
           </Link>

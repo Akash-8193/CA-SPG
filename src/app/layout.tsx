@@ -4,6 +4,7 @@ import "./globals.css";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { Preloader } from "@/components/Preloader";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -29,7 +30,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
-      <body className="antialiased font-sans text-deep-navy bg-warm-white">
+      <body className="antialiased font-sans text-[#1A1A1A] bg-[#FFFFFF]">
+        <Preloader />
         <SmoothScroll>
           <Navbar />
           <main className="min-h-screen relative">{children}</main>

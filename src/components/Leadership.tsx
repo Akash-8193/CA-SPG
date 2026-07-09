@@ -52,12 +52,12 @@ export function Leadership() {
   }, []);
 
   return (
-    <section ref={containerRef} className="py-24 md:py-32 bg-white">
+    <section ref={containerRef} className="pt-12 md:pt-16 pb-24 md:pb-32 bg-transparent">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="text-center mb-20">
-          <p className="text-luxury-gold tracking-[0.2em] uppercase text-xs mb-6 font-semibold">Leadership</p>
-          <h2 className="font-serif text-3xl md:text-5xl text-deep-navy mb-4">
+          <p className="text-[#FF3D3D] tracking-[0.2em] uppercase text-xs mb-6 font-semibold">Leadership</p>
+          <h2 className="font-serif text-3xl md:text-5xl text-[#1A1A1A] mb-4">
             Our Partners. Your Advantage.
           </h2>
         </div>
@@ -66,7 +66,7 @@ export function Leadership() {
           {leaders.map((leader, index) => (
             <div key={index} className="lead-card group flex flex-col md:flex-row gap-8 items-start">
               <div className="w-32 h-32 md:w-48 md:h-48 shrink-0 relative rounded-sm overflow-hidden bg-slate-100">
-                <Image
+                <Image unoptimized
                   src={leader.image}
                   alt={leader.name}
                   fill
@@ -75,15 +75,15 @@ export function Leadership() {
               </div>
               
               <div className="flex flex-col">
-                <h3 className="font-serif text-2xl md:text-3xl text-deep-navy mb-2">{leader.name}</h3>
-                <p className="text-luxury-gold text-xs tracking-widest uppercase font-semibold mb-2">
+                <h3 className="font-serif text-2xl md:text-3xl text-[#1A1A1A] mb-2">{leader.name}</h3>
+                <p className="text-[#FF3D3D] text-xs tracking-widest uppercase font-semibold mb-2">
                   {leader.role}
                 </p>
                 <p className="text-slate-500 font-sans text-sm mb-6">
                   {leader.desc}
                 </p>
-                <div className="w-8 h-[1px] bg-deep-navy/20 mb-6" />
-                <p className="text-slate-gray italic leading-relaxed text-sm">
+                <div className="w-8 h-[1px] bg-[#1A1A1A]/20 mb-6" />
+                <p className="text-[#1A1A1A]/70 italic leading-relaxed text-sm">
                   {leader.quote}
                 </p>
               </div>
