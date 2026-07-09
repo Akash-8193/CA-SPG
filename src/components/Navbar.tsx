@@ -13,7 +13,7 @@ const navLinks = [
     name: "Services", 
     href: "/services",
     dropdown: [
-      { name: "Auditing & Assurance", href: "/services/auditing-assurance" },
+      { name: "Auditing & Assurance", href: "/services/auditing-and-assurance" },
       { name: "Direct Tax", href: "/services/direct-tax" },
       { name: "Indirect Tax", href: "/services/indirect-tax" },
       { name: "Accounting", href: "/services/accounting" },
