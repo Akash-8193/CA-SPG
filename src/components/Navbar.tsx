@@ -36,6 +36,7 @@ const navLinks = [
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -43,16 +44,29 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileMenuOpen]);
+
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
-        scrolled 
-          ? "bg-[#FFFFFF]/95 backdrop-blur-xl shadow-md py-2.5" 
-          : "bg-gradient-to-b from-[#1A1A1A]/80 to-transparent py-4"
+        "fixed top-0 left-0 right-0 z-[100] transition-all duration-500",
+        mobileMenuOpen
+          ? "bg-[#FFFFFF] py-4" 
+          : scrolled 
+            ? "bg-[#FFFFFF]/95 backdrop-blur-xl shadow-md py-2.5" 
+            : "bg-gradient-to-b from-[#1A1A1A]/80 to-transparent py-4"
       )}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative z-[110] max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           <Link href="/" className="group relative z-50 flex items-center">
             <Image 
@@ -61,8 +75,8 @@ export function Navbar() {
               width={300}
               height={100}
               className={cn(
-                "h-16 sm:h-20 w-auto object-contain transition-all duration-300 -my-4",
-                !scrolled && "brightness-0 invert drop-shadow-md"
+                "h-10 md:h-20 w-auto max-w-[70vw] object-contain transition-all duration-300 md:-my-4",
+                (!scrolled && !mobileMenuOpen) && "brightness-0 invert drop-shadow-md"
               )}
               priority
               unoptimized
@@ -122,19 +136,62 @@ export function Navbar() {
 
       {/* Mobile Menu */}
       <div className={cn(
-        "fixed inset-0 bg-[#FFFFFF] z-40 transition-transform duration-500 ease-in-out md:hidden flex flex-col items-center justify-center space-y-8",
+        "fixed inset-0 bg-[#FFFFFF] z-[90] transition-transform duration-500 ease-in-out md:hidden overflow-y-auto",
         mobileMenuOpen ? "translate-x-0" : "translate-x-full"
       )}>
+        <div className="flex flex-col w-full min-h-full pt-28 px-6 pb-12 space-y-2">
         {navLinks.map((link) => (
-          <Link
-            key={link.name}
-            href={link.href}
-            onClick={() => setMobileMenuOpen(false)}
-            className="text-[#1A1A1A] text-2xl font-serif tracking-widest hover:text-[#FF3D3D] transition-colors"
-          >
-            {link.name}
-          </Link>
+          <div key={link.name} className="flex flex-col w-full border-b border-gray-100 pb-4">
+            <div className="flex items-center justify-between w-full">
+              {link.dropdown ? (
+                <button
+                  onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
+                  className="text-left text-[#1A1A1A] text-xl font-serif tracking-widest hover:text-[#FF3D3D] transition-colors"
+                >
+                  {link.name}
+                </button>
+              ) : (
+                <Link
+                  href={link.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-[#1A1A1A] text-xl font-serif tracking-widest hover:text-[#FF3D3D] transition-colors"
+                >
+                  {link.name}
+                </Link>
+              )}
+              {link.dropdown && (
+                <button 
+                  onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
+                  className="p-2 text-[#1A1A1A] bg-gray-50 rounded-full hover:bg-gray-100 ml-4"
+                >
+                  <ChevronDown className={cn("w-5 h-5 transition-transform duration-300", mobileServicesOpen && "rotate-180")} />
+                </button>
+              )}
+            </div>
+            
+            {/* Mobile Dropdown */}
+            {link.dropdown && (
+              <div 
+                className={cn(
+                  "flex flex-col space-y-4 pl-4 border-l-2 border-[#FF3D3D]/20 overflow-hidden transition-all duration-300",
+                  mobileServicesOpen ? "max-h-[800px] mt-6 opacity-100" : "max-h-0 opacity-0"
+                )}
+              >
+                {link.dropdown.map((subLink) => (
+                  <Link
+                    key={subLink.name}
+                    href={subLink.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="text-[#1A1A1A]/80 text-sm font-sans tracking-wide hover:text-[#FF3D3D] transition-colors"
+                  >
+                    {subLink.name}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
         ))}
+        </div>
       </div>
     </header>
   );
