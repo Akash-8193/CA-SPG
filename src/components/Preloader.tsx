@@ -113,8 +113,7 @@ export function Preloader() {
 
       {/* Right Giant Image (3D Effect) */}
       <div 
-        ref={spgRef}
-        className="absolute right-[-20%] md:right-[-10%] top-[55%] md:top-[55%] -translate-y-1/2 w-[700px] md:w-[1000px] h-full pointer-events-none opacity-40 md:opacity-100 flex items-center justify-end z-0"
+        className="absolute inset-0 md:inset-auto md:right-[-10%] top-[75%] md:top-[55%] -translate-y-1/2 w-full md:w-[1000px] h-full pointer-events-none opacity-40 md:opacity-100 flex items-center justify-center md:justify-end z-0"
       >
         {/* Using mix-blend-screen ensures the black background of the image completely disappears on the pure black bg */}
         <img 
@@ -128,21 +127,21 @@ export function Preloader() {
       <div className="flex flex-col z-10 max-w-2xl px-8 md:px-0 mt-32 md:mt-16">
         <div ref={textRef} className="mb-8">
           
-          <p className="hero-text text-gray-300 font-sans text-lg md:text-xl leading-[1.8] mb-12 max-w-sm tracking-wide">
+          <p className="hero-text text-gray-300 font-sans text-base md:text-xl leading-[1.8] mb-12 max-w-sm tracking-wide">
             Chartered Accountants<br />
             Transforming complexity into<br />
             clarity and financial challenges<br />
             into opportunities.
           </p>
 
-          <div className="terminal-text flex items-center text-[#FF3D3D] font-sans text-lg md:text-xl font-extrabold mb-16 md:mb-24 uppercase tracking-widest">
+          <div className="terminal-text flex items-center text-[#FF3D3D] font-sans text-sm md:text-xl font-extrabold mb-16 md:mb-24 uppercase tracking-widest whitespace-nowrap">
             <div className="w-2 h-2 rounded-full bg-[#FF3D3D] mr-4"></div>
             <span>Driving Financial Growth</span>
           </div>
         </div>
 
         {/* Bottom Icons - Matching Screenshot Layout exactly */}
-        <div ref={iconsRef} className="flex items-center gap-6 md:gap-10">
+        <div ref={iconsRef} className="flex items-center justify-between w-full pr-12 md:pr-0 md:justify-start md:gap-10">
           
           <div className="icon-box flex flex-col items-start gap-3">
             <FileSearch className="w-[22px] h-[22px] text-[#888888]" strokeWidth={1.5} />
