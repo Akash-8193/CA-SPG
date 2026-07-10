@@ -66,8 +66,8 @@ export function Preloader() {
         ease: "power3.out"
       }, "-=1.0")
       
-      // Hold for reading (2.5 seconds)
-      .to({}, { duration: 2.5 })
+      // Hold for reading (5.5 seconds to cover loading)
+      .to({}, { duration: 5.5 })
 
       // Animate Out
       .to(".spg-image", {
@@ -106,8 +106,8 @@ export function Preloader() {
     >
       {/* Top Header Logo */}
       <div ref={logoRef} className="absolute top-8 left-8 md:top-12 md:left-24 z-20">
-        <h1 className="hero-logo font-sans text-3xl md:text-4xl font-light tracking-tight text-[#F4F4F4]">
-          SPGK <span className="font-normal">& ASSOCIATES</span>
+        <h1 className="hero-logo font-serif text-3xl md:text-4xl font-bold tracking-tight text-[#FFFFFF]">
+          SPGK <span className="font-light text-[#FF3D3D]">& ASSOCIATES</span>
         </h1>
       </div>
 
@@ -128,16 +128,16 @@ export function Preloader() {
       <div className="flex flex-col z-10 max-w-2xl px-8 md:px-0 mt-32 md:mt-16">
         <div ref={textRef} className="mb-8">
           
-          <p className="hero-text text-[#888888] font-mono text-[13px] md:text-[15px] leading-[1.8] mb-12 max-w-sm tracking-wide">
+          <p className="hero-text text-gray-300 font-sans text-lg md:text-xl leading-[1.8] mb-12 max-w-sm tracking-wide">
             Chartered Accountants<br />
             Transforming complexity into<br />
             clarity and financial challenges<br />
             into opportunities.
           </p>
 
-          <div className="terminal-text flex items-center text-[#4ade80] font-mono text-xs md:text-sm mb-16 md:mb-24">
-            <span className="mr-3 font-bold">&gt; _</span>
-            <span className="tracking-wide">driving financial growth</span>
+          <div className="terminal-text flex items-center text-[#FF3D3D] font-sans text-lg md:text-xl font-extrabold mb-16 md:mb-24 uppercase tracking-widest">
+            <div className="w-2 h-2 rounded-full bg-[#FF3D3D] mr-4"></div>
+            <span>Driving Financial Growth</span>
           </div>
         </div>
 

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { Menu, X, ChevronDown } from "lucide-react";
 
@@ -47,25 +48,25 @@ export function Navbar() {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
         scrolled 
-          ? "bg-[#FFFFFF]/95 backdrop-blur-xl shadow-md py-4" 
-          : "bg-gradient-to-b from-[#1A1A1A]/80 to-transparent py-6"
+          ? "bg-[#FFFFFF]/95 backdrop-blur-xl shadow-md py-2.5" 
+          : "bg-gradient-to-b from-[#1A1A1A]/80 to-transparent py-4"
       )}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          <Link href="/" className="group relative z-50 flex flex-col">
-            <span className={cn(
-              "font-serif font-bold text-2xl tracking-widest transition-colors duration-300",
-              scrolled ? "text-[#1A1A1A]" : "text-white"
-            )}>
-              SPGK
-            </span>
-            <span className={cn(
-              "text-[0.6rem] tracking-[0.2em] uppercase transition-colors duration-300",
-              scrolled ? "text-[#1A1A1A]/80" : "text-white/70"
-            )}>
-              & Associates
-            </span>
+          <Link href="/" className="group relative z-50 flex items-center">
+            <Image 
+              src="/images/spgk-logo-header.png" 
+              alt="SPGK & Associates Logo" 
+              width={300}
+              height={100}
+              className={cn(
+                "h-16 sm:h-20 w-auto object-contain transition-all duration-300 -my-4",
+                !scrolled && "brightness-0 invert drop-shadow-md"
+              )}
+              priority
+              unoptimized
+            />
           </Link>
 
           {/* Desktop Nav */}
