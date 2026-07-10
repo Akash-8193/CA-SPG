@@ -43,7 +43,7 @@ export function ServicesOverview() {
           
           {/* Left Pane: Sidebar Navigation (col-span-3) */}
           <div className="lg:col-span-3 h-full flex flex-col overflow-hidden">
-            <div className="flex-1 overflow-y-auto pr-2 lg:pr-6 pb-8 custom-scrollbar" data-lenis-prevent="true">
+            <div className="flex-1 overflow-y-auto max-h-[250px] md:max-h-[300px] lg:max-h-none pr-2 lg:pr-6 pb-4 lg:pb-8 custom-scrollbar" data-lenis-prevent="true">
               {servicesData.map((service, idx) => {
                 const isActive = activeIdx === idx;
                 const num = String(idx + 1).padStart(2, "0");

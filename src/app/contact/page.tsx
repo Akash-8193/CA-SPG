@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { MapPin, Phone, Mail, Send, CheckCircle2 } from "lucide-react";
+import { MapPin, Phone, Mail, Send, CheckCircle2, ArrowDown } from "lucide-react";
 
 export default function ContactPage() {
   const [formStatus, setFormStatus] = useState<"idle" | "submitting" | "success">("idle");
@@ -22,17 +22,20 @@ export default function ContactPage() {
   return (
     <main className="min-h-screen bg-[#F9F9F9] selection:bg-[#b90a2a] selection:text-white font-sans overflow-hidden">
       
-      {/* 1. Hero Section (Standard 100vh Layout) */}
-      <section className="relative h-[100vh] flex flex-col justify-center overflow-hidden bg-black">
+      {/* 1. Hero Section: Full Width Homepage Style */}
+      <section className="relative h-[100vh] flex flex-col justify-center overflow-hidden">
+        {/* Full Background Image */}
         <div className="absolute inset-0 z-0">
           <Image 
             unoptimized
-            src="/images/dd_hero_1783618496301.png" 
+            src="/images/contact_hero_bg_new.png" 
             alt="Contact Us" 
             fill 
-            className="object-cover object-center scale-105 opacity-60"
+            className="object-cover object-center"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent" />
+          {/* Gradient Overlays for Readability (like homepage) */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#050505]/95 via-[#050505]/70 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-[#050505]/40" />
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
@@ -40,42 +43,35 @@ export default function ContactPage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="max-w-4xl"
+            className="max-w-4xl space-y-8"
           >
-            <div className="inline-flex items-center space-x-3 px-5 py-2 rounded-full bg-[#b90a2a]/20 border border-[#b90a2a]/50 mb-8 backdrop-blur-md">
-              <Mail className="w-4 h-4 text-[#b90a2a]" />
-              <span className="text-[#b90a2a] text-sm md:text-base font-bold tracking-[0.2em] uppercase">
+            {/* Pill Badge matching homepage style */}
+            <div className="inline-flex items-center space-x-3 px-6 py-3 rounded-full bg-[#1A1A1A]/60 border border-white/5 backdrop-blur-md">
+              <Mail className="w-4 h-4 text-[#FF3D3D]" />
+              <span className="text-white text-sm md:text-base font-black tracking-[0.2em] uppercase">
                 We're Here to Help
               </span>
             </div>
             
-            <h1 className="text-5xl md:text-7xl lg:text-[6rem] font-bold text-white tracking-tight leading-[1.05] mb-8">
-              Get in <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#b90a2a] to-[#ff4d4d]">Touch</span>
+            <h1 className="text-6xl md:text-7xl lg:text-[5.5rem] font-serif text-white tracking-tight leading-[1.05]">
+              Get in <span className="font-serif italic text-transparent bg-clip-text bg-gradient-to-r from-[#FF3D3D] to-[#ff8080] pr-4">Touch</span>
             </h1>
-            
-            <p className="text-xl md:text-2xl text-gray-300 leading-relaxed max-w-2xl font-light">
+            <p className="text-xl md:text-2xl text-gray-300 leading-relaxed font-light max-w-2xl">
               Whether you need expert advice, want to schedule a consultation, or have a quick query, reach out and our team will get back to you promptly.
             </p>
           </motion.div>
         </div>
-        
-        {/* Scroll Indicator */}
-        <motion.div 
-          initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1, duration: 1 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center"
-        >
-          <span className="text-gray-400 text-xs tracking-[0.2em] uppercase mb-4">Scroll Down</span>
-          <div className="w-[1px] h-12 bg-white/20 overflow-hidden relative">
-            <motion.div 
-              animate={{ y: ["-100%", "100%"] }} transition={{ duration: 2, ease: "linear", repeat: Infinity }}
-              className="w-full h-1/2 bg-[#b90a2a]"
-            />
-          </div>
-        </motion.div>
+
+        {/* Scroll Down Indicator - Absolute Bottom Center */}
+        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-50">
+           <div className="w-12 h-12 rounded-full border border-white/30 flex items-center justify-center animate-bounce text-white hover:bg-white hover:text-black transition-all cursor-pointer backdrop-blur-md bg-black/50">
+              <ArrowDown className="w-6 h-6" />
+           </div>
+        </div>
       </section>
 
       {/* 2. Form & Details Split Layout */}
-      <section className="py-16 lg:py-12 lg:py-16 relative z-20 -mt-16">
+      <section className="py-16 lg:py-24 relative z-20">
          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col lg:flex-row gap-12 lg:gap-16">
                

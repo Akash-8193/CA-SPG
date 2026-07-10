@@ -112,7 +112,7 @@ export default function CapitalAdvisoryPage() {
                      <div className="absolute bottom-4 left-1/2 w-3 h-3 rounded-full bg-gray-400" />
                      
                      <div className="relative w-[85%] h-[85%] rounded-full overflow-hidden shadow-2xl">
-                        <Image unoptimized src="/images/dd_commercial_1783618550397.png" alt="Equity" fill className="object-cover" />
+                        <Image unoptimized src="/images/cap_advisory_equity_new.png" alt="Equity" fill className="object-cover" />
                      </div>
                   </div>
                </motion.div>
@@ -221,7 +221,7 @@ export default function CapitalAdvisoryPage() {
                      <div className="absolute right-0 top-1/2 translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-[#80c3a6]" />
                      
                      <div className="relative w-[85%] h-[85%] rounded-full overflow-hidden shadow-2xl">
-                        <Image unoptimized src="/images/dd_buysell_1783618560179.png" alt="Business Collaboration" fill className="object-cover" />
+                        <Image unoptimized src="/images/cap_advisory_collaboration_new.png" alt="Business Collaboration" fill className="object-cover" />
                      </div>
                   </div>
                </motion.div>

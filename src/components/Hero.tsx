@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight, ArrowDown } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
@@ -100,7 +100,7 @@ export function Hero() {
       <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A]/80 via-[#1A1A1A]/40 to-transparent z-0 pointer-events-none" />
 
       {/* Content */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-40 pb-32 lg:pt-48 lg:pb-40 flex flex-col justify-end min-h-[100vh] lg:min-h-[110vh]">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-24 md:pt-40 md:pb-32 lg:pt-48 lg:pb-40 flex flex-col justify-end min-h-[100vh] lg:min-h-[110vh]">
         <div ref={textRef} className="flex flex-col lg:flex-row lg:items-end justify-between gap-12">
           
           {/* Animated Content Wrapper */}
@@ -165,6 +165,13 @@ export function Hero() {
           </div>
 
         </div>
+      </div>
+
+      {/* Scroll Down Indicator - Absolute Bottom Center */}
+      <div className="absolute bottom-12 lg:bottom-[16vh] left-1/2 transform -translate-x-1/2 z-50">
+         <div className="w-12 h-12 rounded-full border border-white/30 flex items-center justify-center animate-bounce text-white hover:bg-white hover:text-black transition-all cursor-pointer backdrop-blur-md bg-[#1A1A1A]/30">
+            <ArrowDown className="w-6 h-6" />
+         </div>
       </div>
     </section>
   );

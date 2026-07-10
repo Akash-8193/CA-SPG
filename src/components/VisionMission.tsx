@@ -70,7 +70,7 @@ export function VisionMission() {
         <div ref={scrollRef} className="flex flex-nowrap h-full items-center pl-[10vw] md:pl-[20vw] pr-[20vw]">
           
           {/* Intro Slide */}
-          <div className="w-[80vw] md:w-[60vw] shrink-0 mr-32 flex flex-col justify-center h-full">
+          <div className="w-[80vw] md:w-[60vw] shrink-0 mr-8 md:mr-32 flex flex-col justify-center h-full">
             <h2 className="font-serif text-[8vw] md:text-[5vw] text-[#1A1A1A] leading-[1.1] mb-8">
               Excellence isn't a metric. <br/>
               <span className="italic text-[#1A1A1A]/80">It's our method.</span>
@@ -79,7 +79,7 @@ export function VisionMission() {
 
           {/* Content Slides */}
           {items.map((item, idx) => (
-            <div key={idx} className="w-[90vw] md:w-[70vw] shrink-0 flex flex-col md:flex-row items-center gap-12 md:gap-24 mr-24 h-[70vh]">
+            <div key={idx} className="w-[90vw] md:w-[70vw] shrink-0 flex flex-col md:flex-row items-center gap-12 md:gap-24 mr-8 md:mr-24 h-[70vh]">
               
               <div className="relative w-full md:w-1/2 h-1/2 md:h-full rounded-sm overflow-hidden">
                 <Image unoptimized

@@ -189,7 +189,7 @@ export default function FemaAdvisoryPage() {
                >
                   <Image 
                      unoptimized
-                     src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80"
+                     src="/images/ipm_contracts_new.png"
                      alt="RBI Approvals"
                      fill
                      className="object-cover"
@@ -249,7 +249,7 @@ export default function FemaAdvisoryPage() {
                      className="bg-white p-10 lg:p-12 rounded-[2rem] shadow-sm border border-gray-100 flex flex-col md:flex-row gap-8 items-center"
                   >
                      <div className="w-full md:w-[40%] h-48 relative rounded-xl overflow-hidden shrink-0">
-                        <Image unoptimized src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80" alt="FEMA Audit" fill className="object-cover" />
+                        <Image unoptimized src="/images/ipm_accounting_new.png" alt="FEMA Audit" fill className="object-cover" />
                      </div>
                      <div>
                         <FileSearch className="w-8 h-8 text-[#b90a2a] mb-4" />

@@ -27,7 +27,7 @@ export default function ESGPage() {
         <div className="absolute inset-0 z-0">
           <Image 
             unoptimized
-            src="/images/dd_hero_1783618496301.png" 
+            src="/images/esg_hero_new.png" 
             alt="ESG Services" 
             fill 
             className="object-cover object-center scale-105 opacity-60"
@@ -157,7 +157,7 @@ export default function ESGPage() {
                   className="w-full lg:w-1/2 relative"
                >
                   <div className="relative h-[450px] w-full rounded-[2.5rem] overflow-hidden shadow-2xl">
-                     <Image unoptimized src="/images/dd_commercial_1783618550397.png" alt="Reporting" fill className="object-cover" />
+                     <Image unoptimized src="/images/esg_reporting_new.png" alt="Reporting" fill className="object-cover" />
                   </div>
                </motion.div>
 
@@ -182,7 +182,7 @@ export default function ESGPage() {
                      <div className="absolute right-0 top-1/2 translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-[#80c3a6]" />
                      
                      <div className="relative w-[85%] h-[85%] rounded-full overflow-hidden shadow-2xl">
-                        <Image unoptimized src="/images/dd_financial_1783618507090.png" alt="Sustainability" fill className="object-cover" />
+                        <Image unoptimized src="/images/esg_sustainability_new.png" alt="Sustainability" fill className="object-cover" />
                      </div>
                   </div>
                </motion.div>

@@ -12,42 +12,42 @@ const infrastructureServices = [
   { 
     title: "MOU/Lease Negotiation & Terms Review", 
     description: "We assist in drafting, negotiating, and reviewing Memorandums of Understanding (MOUs), lease agreements, and related contracts to ensure favorable terms for our clients. Our goal is to protect your interests, mitigate risks, and establish clear obligations before any project groundwork begins.",
-    image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80&w=800"
+    image: "/images/ipm_contracts_new.png"
   },
   { 
     title: "Pre-award Contract Research", 
     description: "Before awarding any contracts, we conduct thorough research on contractors, vendors, and proposed terms. This due diligence ensures you make informed decisions, avoid overpricing, and select the most capable partners—laying the foundation for successful project execution.",
-    image: "https://images.unsplash.com/photo-1541888087625-f81464c57768?auto=format&fit=crop&q=80&w=800"
+    image: "/images/ipm_accounting_new.png"
   },
   { 
     title: "Control over Contract Awards", 
     description: "We implement structured processes to maintain oversight over all contract awards. This includes setting up evaluation criteria, reviewing bid documents, and monitoring compliance with procurement policies—ensuring transparency, cost-efficiency, and legal integrity.",
-    image: "https://images.unsplash.com/photo-1504307651254-35680f356f12?auto=format&fit=crop&q=80&w=800"
+    image: "/images/ipm_compliance_new.png"
   },
   { 
     title: "Verification of Contractor Bills", 
     description: "To prevent overbilling and ensure accurate payments, we verify contractor bills based on actual site work, BOQ (Bill of Quantities), and work progress. This process ensures accountability, reduces financial leakages, and enhances trust across stakeholders.",
-    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=800"
+    image: "/images/ipm_accounting_new.png"
   },
   { 
     title: "Disbursement Payment to Contractor", 
     description: "We manage the scheduling, documentation, and release of payments to contractors as per pre-approved milestones and contractual obligations. Our structured approach ensures timely payments without compromising on project checks and balances.",
-    image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=800"
+    image: "/images/ipm_contracts_new.png"
   },
   { 
     title: "Complete Accounting Work for Infra Projects", 
     description: "We offer dedicated accounting services tailored for infrastructure projects, covering budgeting, expense tracking, billing cycles, taxation, and financial reporting. This ensures transparency, investor confidence, and full compliance with regulatory norms.",
-    image: "https://images.unsplash.com/photo-1556740758-90de374c12ad?auto=format&fit=crop&q=80&w=800"
+    image: "/images/ipm_accounting_new.png"
   },
   { 
     title: "Project Land Registration & Regulatory Clearances", 
     description: "We handle the critical aspects of land registration, mutation, title verification, and obtaining required regulatory clearances for infrastructure projects. Our expertise ensures legal sanctity of land acquisition and speeds up project commencement timelines.",
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=800"
+    image: "/images/ipm_compliance_new.png"
   },
   { 
     title: "RERA Compliant", 
     description: "We ensure that your real estate and infrastructure projects are fully compliant with RERA (Real Estate Regulatory Authority) norms. This includes documentation, project registration, periodic updates, and customer transparency—enhancing credibility and reducing legal exposure.",
-    image: "https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?auto=format&fit=crop&q=80&w=800"
+    image: "/images/ipm_contracts_new.png"
   }
 ];
 
@@ -74,7 +74,7 @@ export default function InfrastructurePage() {
         <div className="absolute inset-0 z-0">
           <Image 
             unoptimized
-            src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80&w=1600" 
+            src="/images/ipm_hero_new.png" 
             alt="Infrastructure Project Management" 
             fill 
             className="object-cover object-center"
@@ -213,7 +213,7 @@ export default function InfrastructurePage() {
               <div className="relative w-full h-[500px] lg:h-[700px] rounded-[2rem] overflow-hidden shadow-xl border border-gray-200">
                 <Image 
                   unoptimized 
-                  src="https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&q=80&w=800" 
+                  src="/images/ipm_compliance_new.png" 
                   alt="Infrastructure Consultants" 
                   fill 
                   className="object-cover"

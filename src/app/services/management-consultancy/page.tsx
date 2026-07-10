@@ -38,7 +38,7 @@ export default function ManagementConsultancyPage() {
         <div className="absolute inset-0 z-0">
           <Image 
             unoptimized
-            src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1600" 
+            src="/images/mc_hero_new.png" 
             alt="Management Consultancy" 
             fill 
             className="object-cover object-center"
@@ -105,9 +105,9 @@ export default function ManagementConsultancyPage() {
                      <div className="absolute bottom-12 -left-2 w-4 h-4 bg-gray-400 rounded-full z-10" />
 
                      <div className="w-full h-full rounded-full overflow-hidden relative shadow-[0_10px_40px_rgba(0,0,0,0.1)]">
-                        <Image 
-                          unoptimized
-                          src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800"
+                        <div className="absolute inset-0 bg-[#FF3D3D]/10 group-hover:bg-transparent transition-colors duration-500 z-10" />
+                        <Image unoptimized 
+                          src="/images/mc_restructuring_new.png"
                           alt="Corporate Advisory"
                           fill
                           className="object-cover"
@@ -144,7 +144,7 @@ export default function ManagementConsultancyPage() {
                {/* Card 1 */}
                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="flex flex-col group">
                   <div className="h-64 relative rounded-t-3xl overflow-hidden">
-                     <Image unoptimized src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800" alt="MIS" fill className="object-cover transform group-hover:scale-105 transition-duration-500" />
+                     <Image unoptimized src="/images/mc_mis_new.png" alt="MIS" fill className="object-cover transform group-hover:scale-105 transition-duration-500" />
                   </div>
                   <div className="bg-[#FCFBF7] rounded-b-3xl p-8 flex-grow shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-t-0 border-[#f0ede6]">
                      <h3 className="text-xl font-bold text-[#1A1A1A] mb-4 text-center leading-tight">Preparation of MIS & Review with Solution</h3>
@@ -155,7 +155,7 @@ export default function ManagementConsultancyPage() {
                {/* Card 2 */}
                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="flex flex-col group">
                   <div className="h-64 relative rounded-t-3xl overflow-hidden">
-                     <Image unoptimized src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&q=80&w=800" alt="SOP" fill className="object-cover transform group-hover:scale-105 transition-duration-500" />
+                     <Image unoptimized src="/images/mc_sop_new.png" alt="SOP" fill className="object-cover transform group-hover:scale-105 transition-duration-500" />
                   </div>
                   <div className="bg-[#FCFBF7] rounded-b-3xl p-8 flex-grow shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-t-0 border-[#f0ede6]">
                      <h3 className="text-xl font-bold text-[#1A1A1A] mb-4 text-center leading-tight">Preparation of SOP & Corporate Policies</h3>
@@ -166,7 +166,7 @@ export default function ManagementConsultancyPage() {
                {/* Card 3 */}
                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="flex flex-col group">
                   <div className="h-64 relative rounded-t-3xl overflow-hidden">
-                     <Image unoptimized src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?auto=format&fit=crop&q=80&w=800" alt="Restructuring" fill className="object-cover transform group-hover:scale-105 transition-duration-500" />
+                     <Image unoptimized src="/images/mc_restructuring_new.png" alt="Restructuring" fill className="object-cover transform group-hover:scale-105 transition-duration-500" />
                   </div>
                   <div className="bg-[#FCFBF7] rounded-b-3xl p-8 flex-grow shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-t-0 border-[#f0ede6]">
                      <h3 className="text-xl font-bold text-[#1A1A1A] mb-4 text-center leading-tight">Business Restructuring (Amalgamation, Merger)</h3>
@@ -177,7 +177,7 @@ export default function ManagementConsultancyPage() {
                {/* Card 4 */}
                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="flex flex-col group mt-4">
                   <div className="h-64 relative rounded-t-3xl overflow-hidden">
-                     <Image unoptimized src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=800" alt="Fund Flow" fill className="object-cover transform group-hover:scale-105 transition-duration-500" />
+                     <Image unoptimized src="/images/mc_fund_flow_new.png" alt="Fund Flow" fill className="object-cover transform group-hover:scale-105 transition-duration-500" />
                   </div>
                   <div className="bg-[#FCFBF7] rounded-b-3xl p-8 flex-grow shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-t-0 border-[#f0ede6]">
                      <h3 className="text-xl font-bold text-[#1A1A1A] mb-4 text-center leading-tight">Preparation and Review of Fund Flow & Cash Flow Forecasts</h3>
@@ -188,7 +188,7 @@ export default function ManagementConsultancyPage() {
                {/* Card 5 */}
                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="flex flex-col group mt-4">
                   <div className="h-64 relative rounded-t-3xl overflow-hidden">
-                     <Image unoptimized src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&q=80&w=800" alt="Project Report" fill className="object-cover transform group-hover:scale-105 transition-duration-500" />
+                     <Image unoptimized src="/images/mc_project_report_new.png" alt="Project Report" fill className="object-cover transform group-hover:scale-105 transition-duration-500" />
                   </div>
                   <div className="bg-[#FCFBF7] rounded-b-3xl p-8 flex-grow shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-t-0 border-[#f0ede6]">
                      <h3 className="text-xl font-bold text-[#1A1A1A] mb-4 text-center leading-tight">Assessment & Preparation of Project Report</h3>
@@ -199,7 +199,7 @@ export default function ManagementConsultancyPage() {
                {/* Card 6 */}
                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="flex flex-col group mt-4">
                   <div className="h-64 relative rounded-t-3xl overflow-hidden">
-                     <Image unoptimized src="https://images.unsplash.com/photo-1579621970588-a3f5ce599d6d?auto=format&fit=crop&q=80&w=800" alt="Working Capital" fill className="object-cover transform group-hover:scale-105 transition-duration-500" />
+                     <Image unoptimized src="/images/mc_working_capital_new.png" alt="Working Capital" fill className="object-cover transform group-hover:scale-105 transition-duration-500" />
                   </div>
                   <div className="bg-[#FCFBF7] rounded-b-3xl p-8 flex-grow shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-t-0 border-[#f0ede6]">
                      <h3 className="text-xl font-bold text-[#1A1A1A] mb-4 text-center leading-tight">Working Capital Requirement</h3>
@@ -232,9 +232,8 @@ export default function ManagementConsultancyPage() {
                      <div className="absolute bottom-12 left-6 w-4 h-4 bg-gray-400 rounded-full" />
 
                      <div className="w-full h-full rounded-full overflow-hidden relative shadow-2xl">
-                        <Image 
-                          unoptimized
-                          src="https://images.unsplash.com/photo-1518186285589-2f7649de83e0?auto=format&fit=crop&q=80&w=800"
+                        <Image unoptimized 
+                          src="/images/mc_fund_flow_new.png"
                           alt="Capital Structure"
                           fill
                           className="object-cover"
@@ -359,8 +358,8 @@ export default function ManagementConsultancyPage() {
             <div className="relative w-full">
               <div className="relative w-full h-[500px] lg:h-[700px] rounded-[2rem] overflow-hidden shadow-xl border border-gray-200">
                 <Image 
-                  unoptimized 
-                  src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=800" 
+                  unoptimized
+                  src="/images/mc_project_report_new.png" 
                   alt="Consultants" 
                   fill 
                   className="object-cover"

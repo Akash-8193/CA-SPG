@@ -66,14 +66,14 @@ export function Features() {
           </div>
 
           {/* Content */}
-          <div className="relative z-10 p-6 md:p-12 w-full text-white">
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div className="relative z-10 p-4 md:p-12 w-full text-white">
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 md:gap-6">
 
               <div className="flex gap-6 items-end">
                 <span className="font-serif text-white/80 text-4xl hidden md:block drop-shadow-sm">0{idx + 1}</span>
                 <div>
                   <h3 className={cn(
-                    "font-serif text-3xl md:text-5xl text-white transition-all duration-700 whitespace-nowrap drop-shadow-md",
+                    "font-serif text-2xl md:text-5xl text-white transition-all duration-700 whitespace-nowrap drop-shadow-md truncate md:overflow-visible",
                     activeIdx !== idx && "md:[writing-mode:vertical-rl] md:rotate-180 md:-translate-y-8"
                   )}>
                     {feature.title}

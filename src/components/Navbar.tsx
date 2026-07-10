@@ -109,7 +109,8 @@ export function Navbar() {
           {/* Mobile Menu Button */}
           <button 
             className={cn(
-              "md:hidden relative z-50 p-2 text-[#1A1A1A]"
+              "md:hidden relative z-50 p-2",
+              scrolled || mobileMenuOpen ? "text-[#1A1A1A]" : "text-white"
             )}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
