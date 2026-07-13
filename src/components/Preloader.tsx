@@ -66,8 +66,8 @@ export function Preloader() {
         ease: "power3.out"
       }, "-=1.0")
       
-      // Hold for reading (5.5 seconds to cover loading)
-      .to({}, { duration: 5.5 })
+      // Hold for reading (reduced to cover loading faster)
+      .to({}, { duration: 1.5 })
 
       // Animate Out
       .to(".spg-image", {

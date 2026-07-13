@@ -4,19 +4,80 @@ import { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { MapPin, Phone, Mail, Send, CheckCircle2, ArrowDown } from "lucide-react";
+import { supabase } from "@/lib/supabaseClient";
 
 export default function ContactPage() {
-  const [formStatus, setFormStatus] = useState<"idle" | "submitting" | "success">("idle");
+  const [formStatus, setFormStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [submittedMessage, setSubmittedMessage] = useState("");
+  const [validationErrors, setValidationErrors] = useState<{ [key: string]: string }>({});
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    subject: "",
+    message: ""
+  });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+    // Clear validation error when user types
+    if (validationErrors[e.target.name]) {
+      setValidationErrors(prev => ({ ...prev, [e.target.name]: "" }));
+    }
+  };
+
+  const validateForm = () => {
+    const errors: { [key: string]: string } = {};
+    if (formData.name.trim().length < 3) errors.name = "Name must be at least 3 characters.";
+    if (!/^\S+@\S+\.\S+$/.test(formData.email)) errors.email = "Please enter a valid email address.";
+    
+    const phoneDigits = formData.phone.replace(/\D/g, '');
+    if (formData.phone && phoneDigits.length !== 10 && phoneDigits.length !== 12) {
+      errors.phone = "Phone number must be exactly 10 digits.";
+    }
+    
+    if (formData.subject.trim().length < 3) errors.subject = "Subject must be at least 3 characters.";
+    if (formData.message.trim().length < 10) errors.message = "Message must be at least 10 characters.";
+    return errors;
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    const errors = validateForm();
+    if (Object.keys(errors).length > 0) {
+      setValidationErrors(errors);
+      return;
+    }
+
     setFormStatus("submitting");
-    // Simulate form submission
-    setTimeout(() => {
+    
+    try {
+      const { error } = await supabase
+        .from('contacts')
+        .insert([
+          { 
+            name: formData.name, 
+            email: formData.email, 
+            phone: formData.phone, 
+            subject: formData.subject, 
+            message: formData.message 
+          }
+        ]);
+
+      if (error) throw error;
+
+      setSubmittedMessage(formData.message);
       setFormStatus("success");
-      // Reset after 3 seconds
+      setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
+      
+      // Reset after 5 seconds to give them time to read the thank you message
+      setTimeout(() => setFormStatus("idle"), 5000);
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setFormStatus("error");
       setTimeout(() => setFormStatus("idle"), 3000);
-    }, 1500);
+    }
   };
 
   return (
@@ -91,19 +152,27 @@ export default function ContactPage() {
                            <label className="text-sm font-bold text-gray-700 uppercase tracking-wide">Your Name</label>
                            <input 
                               type="text" 
+                              name="name"
+                              value={formData.name}
+                              onChange={handleChange}
                               required
-                              className="w-full bg-[#F9F9F9] border border-gray-200 rounded-xl px-5 py-4 text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#b90a2a]/20 focus:border-[#b90a2a] transition-all"
+                              className={`w-full bg-[#F9F9F9] border ${validationErrors.name ? 'border-red-400' : 'border-gray-200'} rounded-xl px-5 py-4 text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#b90a2a]/20 focus:border-[#b90a2a] transition-all`}
                               placeholder="John Doe"
                            />
+                           {validationErrors.name && <p className="text-red-500 text-xs font-medium mt-1">{validationErrors.name}</p>}
                         </div>
                         <div className="space-y-2">
                            <label className="text-sm font-bold text-gray-700 uppercase tracking-wide">Email Address</label>
                            <input 
                               type="email" 
+                              name="email"
+                              value={formData.email}
+                              onChange={handleChange}
                               required
-                              className="w-full bg-[#F9F9F9] border border-gray-200 rounded-xl px-5 py-4 text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#b90a2a]/20 focus:border-[#b90a2a] transition-all"
+                              className={`w-full bg-[#F9F9F9] border ${validationErrors.email ? 'border-red-400' : 'border-gray-200'} rounded-xl px-5 py-4 text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#b90a2a]/20 focus:border-[#b90a2a] transition-all`}
                               placeholder="john@example.com"
                            />
+                           {validationErrors.email && <p className="text-red-500 text-xs font-medium mt-1">{validationErrors.email}</p>}
                         </div>
                      </div>
 
@@ -112,48 +181,86 @@ export default function ContactPage() {
                            <label className="text-sm font-bold text-gray-700 uppercase tracking-wide">Phone Number</label>
                            <input 
                               type="tel" 
-                              className="w-full bg-[#F9F9F9] border border-gray-200 rounded-xl px-5 py-4 text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#b90a2a]/20 focus:border-[#b90a2a] transition-all"
+                              name="phone"
+                              value={formData.phone}
+                              onChange={handleChange}
+                              className={`w-full bg-[#F9F9F9] border ${validationErrors.phone ? 'border-red-400' : 'border-gray-200'} rounded-xl px-5 py-4 text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#b90a2a]/20 focus:border-[#b90a2a] transition-all`}
                               placeholder="+91 9876543210"
                            />
+                           {validationErrors.phone && <p className="text-red-500 text-xs font-medium mt-1">{validationErrors.phone}</p>}
                         </div>
                         <div className="space-y-2">
                            <label className="text-sm font-bold text-gray-700 uppercase tracking-wide">Subject</label>
                            <input 
                               type="text" 
+                              name="subject"
+                              value={formData.subject}
+                              onChange={handleChange}
                               required
-                              className="w-full bg-[#F9F9F9] border border-gray-200 rounded-xl px-5 py-4 text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#b90a2a]/20 focus:border-[#b90a2a] transition-all"
+                              className={`w-full bg-[#F9F9F9] border ${validationErrors.subject ? 'border-red-400' : 'border-gray-200'} rounded-xl px-5 py-4 text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#b90a2a]/20 focus:border-[#b90a2a] transition-all`}
                               placeholder="How can we help?"
                            />
+                           {validationErrors.subject && <p className="text-red-500 text-xs font-medium mt-1">{validationErrors.subject}</p>}
                         </div>
                      </div>
 
                      <div className="space-y-2">
                         <label className="text-sm font-bold text-gray-700 uppercase tracking-wide">Message</label>
                         <textarea 
+                           name="message"
+                           value={formData.message}
+                           onChange={handleChange}
                            required
                            rows={5}
-                           className="w-full bg-[#F9F9F9] border border-gray-200 rounded-xl px-5 py-4 text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#b90a2a]/20 focus:border-[#b90a2a] transition-all resize-none"
+                           className={`w-full bg-[#F9F9F9] border ${validationErrors.message ? 'border-red-400' : 'border-gray-200'} rounded-xl px-5 py-4 text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#b90a2a]/20 focus:border-[#b90a2a] transition-all resize-none`}
                            placeholder="Write your message here..."
                         />
+                        {validationErrors.message && <p className="text-red-500 text-xs font-medium mt-1">{validationErrors.message}</p>}
                      </div>
 
                      <button 
                         type="submit"
-                        disabled={formStatus !== "idle"}
+                        disabled={formStatus === "submitting" || formStatus === "success"}
                         className={`w-full py-4 rounded-xl font-bold uppercase tracking-widest text-sm flex items-center justify-center transition-all ${
                            formStatus === "success" 
                            ? "bg-green-500 text-white" 
                            : "bg-[#b90a2a] text-white hover:bg-[#9a0822] shadow-lg hover:shadow-[#b90a2a]/30"
                         }`}
                      >
-                        {formStatus === "idle" && (
+                        {formStatus === "idle" || formStatus === "error" ? (
                            <>Send Message <Send className="ml-2 w-4 h-4" /></>
-                        )}
-                        {formStatus === "submitting" && "Sending..."}
-                        {formStatus === "success" && (
+                        ) : formStatus === "submitting" ? (
+                           "Sending..."
+                        ) : (
                            <>Message Sent! <CheckCircle2 className="ml-2 w-4 h-4" /></>
                         )}
                      </button>
+
+                     {formStatus === "error" && (
+                        <p className="text-red-500 text-sm font-bold text-center mt-4">Error Sending Message. Please try again later.</p>
+                     )}
+
+                     {formStatus === "success" && (
+                        <motion.div 
+                           initial={{ opacity: 0, y: 15 }}
+                           animate={{ opacity: 1, y: 0 }}
+                           className="mt-6 p-6 bg-green-50 border border-green-200 rounded-2xl flex items-start space-x-4 shadow-sm"
+                        >
+                           <div className="bg-green-500 rounded-full p-1.5 mt-0.5 shrink-0">
+                              <CheckCircle2 className="w-5 h-5 text-white" />
+                           </div>
+                           <div>
+                              <h4 className="text-green-800 font-bold text-lg mb-1">Thank You!</h4>
+                              <p className="text-green-700 text-sm leading-relaxed mb-3">
+                                 Your message has been successfully sent. Our team will review your inquiry and get back to you shortly.
+                              </p>
+                              <div className="bg-white/60 p-4 rounded-xl border border-green-200 mt-2">
+                                 <p className="text-xs font-bold text-green-800 uppercase tracking-wider mb-1">Your Message:</p>
+                                 <p className="text-green-900 text-sm italic">"{submittedMessage}"</p>
+                              </div>
+                           </div>
+                        </motion.div>
+                     )}
                   </form>
                </motion.div>
 

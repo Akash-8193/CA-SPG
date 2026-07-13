@@ -5,7 +5,7 @@ import { SmoothScroll } from "@/components/SmoothScroll";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Preloader } from "@/components/Preloader";
-
+import { WhatsAppButton } from "@/components/WhatsAppButton";
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
@@ -37,6 +37,7 @@ export default function RootLayout({
           <main className="min-h-screen relative">{children}</main>
           <Footer />
         </SmoothScroll>
+        <WhatsAppButton />
       </body>
     </html>
   );
